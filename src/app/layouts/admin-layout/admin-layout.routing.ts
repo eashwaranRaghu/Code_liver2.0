@@ -18,6 +18,7 @@ import { HelpComponent } from '../../help/help.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'editor',      component: EditorComponent },
+    { path: 'editor/:id',      component: EditorComponent },
     { path: 'rooms',   component: RoomsComponent },
     { path: 'video-chat',     component: VideoChatComponent },
     { path: 'spacerocker',     component: SpacerockerComponent },
