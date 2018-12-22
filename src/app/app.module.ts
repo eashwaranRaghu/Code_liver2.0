@@ -13,6 +13,12 @@ import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { EditorComponent } from './editor/editor.component';
+import { RoomsComponent } from './rooms/rooms.component';
+import { VideoChatComponent } from './video-chat/video-chat.component';
+import { SpacerockerComponent } from './spacerocker/spacerocker.component';
+import { FileSharingComponent } from './file-sharing/file-sharing.component';
+import { AboutComponent } from './about/about.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   imports: [
@@ -28,6 +34,12 @@ import { EditorComponent } from './editor/editor.component';
     AppComponent,
     AdminLayoutComponent,
     EditorComponent,
+    RoomsComponent,
+    VideoChatComponent,
+    SpacerockerComponent,
+    FileSharingComponent,
+    AboutComponent,
+    HelpComponent,
 
   ],
   providers: [],
