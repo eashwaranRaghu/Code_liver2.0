@@ -8,8 +8,8 @@
 # dependencies
 /node_modules
 
-# enviornments
-/src/environments
+environment.ts
+environment.prod.ts
 
 # IDEs and editors
 /.idea
