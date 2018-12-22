@@ -1,0 +1,21 @@
+
+<div class="logo">
+    <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+      <div class="logo-img">
+          <img src="./assets/img/codeliver.ico"/>
+      </div>
+    </a>
+    <a href="./" class="simple-text logo-normal">
+        CodeLiver
+    </a>
+</div>
+<div class="sidebar-wrapper">
+    <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a [routerLink]="[menuItem.path]">
+                <i class="now-ui-icons {{menuItem.icon}}"></i>
+                <p style="transform: scale(1.4);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
