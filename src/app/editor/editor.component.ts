@@ -30,7 +30,6 @@ export class EditorComponent implements OnInit {
               roomNumber = s['params'].id;
               let path = (roomNumber) ? roomNumber : globalRoom;
               path = 'rooms/' + path;
-              console.log(path);
           db.object((path) + '/editor').valueChanges().subscribe(editor => {
               this.editor = editor;
               this.codeEditor.setValue(editor.toString(), 1);
@@ -55,11 +54,12 @@ export class EditorComponent implements OnInit {
   }
 
     public pushEditor() {
-      console.log('keyup', this.codeEditor.getCursorPosition());
-        let currentRoute = 'global';
-      /*if (this.route.paramMap['params'] && this.route.paramMap['params'].id){
-          currentRoute = this.route.paramMap['params'].id;
-      }*/
+      let currentRoute = 'global';
+      if (this.route.snapshot.paramMap['params']){
+          if (this.route.snapshot.paramMap['params'].id){
+              currentRoute = this.route.snapshot.paramMap['params'].id;
+          }
+      }
         this.db.list('rooms').update(currentRoute, {editor: this.codeEditor.getValue()});
     }
     public pushChat() {
