@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-
+/src/environment
 environment.ts
 environment.prod.ts
 
