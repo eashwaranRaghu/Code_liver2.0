@@ -13,6 +13,15 @@ export class RoomsComponent implements OnInit {
               console.log(s);
           }
       );
+      /*for(let i =1; i<=100; i++){
+          let ob = {};
+          ob = {
+              roomNumber: i,
+              editor: 'a',
+              chat: 'b'
+          };
+          db.list('rooms').push(ob);
+      }*/
   }
 
   ngOnInit() {
