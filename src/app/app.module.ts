@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 
 import { AppRoutingModule } from './app.routing';
@@ -16,6 +18,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 @NgModule({
   imports: [
     BrowserAnimationsModule,
+      AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
     HttpModule,
     ComponentsModule,
