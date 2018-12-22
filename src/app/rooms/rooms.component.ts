@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 @Component({
   selector: 'app-rooms',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoomsComponent implements OnInit {
 
-  constructor() { }
+  constructor(db: AngularFireDatabase) {
+      db.object('rooms').valueChanges().subscribe( s => {
+              console.log(s);
+          }
+      );
+  }
 
   ngOnInit() {
   }
