@@ -2,22 +2,16 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 declare var require: any;
 import * as ace from 'ace-builds';
 
-//require("ace-builds/src-noconflict/mode-javascript")
-//import 'ace-builds/src-noconflict/mode-javascript';
-// import 'ace-builds/src-noconflict/theme-github';
-// import 'ace-builds/src-noconflict/ext-language_tools';
-// import 'ace-builds/src-noconflict/ext-beautify';
-
 import 'brace/index';
 import 'brace/theme/monokai';
 import 'brace/mode/typescript';
 import 'brace/mode/javascript';
 import 'brace/ext/language_tools.js';
 
-import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/theme-github';
-import 'ace-builds/src-noconflict/ext-language_tools';
-import 'ace-builds/src-noconflict/ext-beautify';
+// import 'ace-builds/src-noconflict/mode-javascript';
+// import 'ace-builds/src-noconflict/theme-github';
+// import 'ace-builds/src-noconflict/ext-language_tools';
+// import 'ace-builds/src-noconflict/ext-beautify';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 
@@ -46,7 +40,6 @@ export class EditorComponent implements OnInit {
               roomNumber = s['params'].id;
               let path = (roomNumber) ? roomNumber : globalRoom;
               path = 'rooms/' + path;
-              console.log(path);
           db.object((path) + '/editor').valueChanges().subscribe(editor => {
               this.editor = editor;
               this.codeEditor.setValue(editor.toString(), 1);
@@ -70,11 +63,12 @@ export class EditorComponent implements OnInit {
   }
 
     public pushEditor() {
-      //console.log('keyup', this.codeEditor.getCursorPosition());
-        let currentRoute = 'global';
-      /*if (this.route.paramMap['params'] && this.route.paramMap['params'].id){
-          currentRoute = this.route.paramMap['params'].id;
-      }*/
+      let currentRoute = 'global';
+      if (this.route.snapshot.paramMap['params']){
+          if (this.route.snapshot.paramMap['params'].id){
+              currentRoute = this.route.snapshot.paramMap['params'].id;
+          }
+      }
         this.db.list('rooms').update(currentRoute, {editor: this.codeEditor.getValue()});
     }
     public pushChat() {
