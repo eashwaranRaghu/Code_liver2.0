@@ -7,14 +7,21 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Editor',  icon: 'design_app', class: '' },
-    { path: '/icons', title: 'Rooms',  icon:'business_bank', class: '' },
-    { path: '/maps', title: 'Video Chat',  icon:'tech_tv', class: '' },
-    { path: '/notifications', title: 'SpaceRocker',  icon:'media-1_button-play', class: '' },
+    { path: '/editor', title: 'Editor',  icon: 'design_app', class: '' },
+    { path: '/rooms', title: 'Rooms',  icon:'business_bank', class: '' },
+    { path: '/video-chat', title: 'Video Chat',  icon:'tech_tv', class: '' },
+    { path: '/spacerocker', title: 'SpaceRocker',  icon:'media-1_button-play', class: '' },
+    { path: '/filesharing', title: 'File Sharing',  icon:'files_single-copy-04', class: '' },
+    { path: '/about', title: 'About',  icon:'travel_info', class: '' },
+    { path: '/help', title: 'Help',  icon:'education_agenda-bookmark', class: '' },
 
-    { path: '/user-profile', title: 'File Sharing',  icon:'files_single-copy-04', class: '' },
-    { path: '/table-list', title: 'About',  icon:'travel_info', class: '' },
-    { path: '/typography', title: 'Help',  icon:'text_caps-small', class: '' }
+    { path: '/dashboard', title: 'Editor1',  icon: 'design_app', class: '' },
+    { path: '/icons', title: 'Rooms1',  icon:'business_bank', class: '' },
+    { path: '/maps', title: 'Video Chat1',  icon:'tech_tv', class: '' },
+    { path: '/notifications', title: 'SpaceRocker1',  icon:'media-1_button-play', class: '' },
+    { path: '/user-profile', title: 'File Sharing1',  icon:'files_single-copy-04', class: '' },
+    { path: '/table-list', title: 'About1',  icon:'travel_info', class: '' },
+    { path: '/typography', title: 'Help1',  icon:'text_caps-small', class: '' }
 ];
 
 @Component({

@@ -14,6 +14,15 @@ import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 
+
+import { EditorComponent } from '../../editor/editor.component';
+import { RoomsComponent } from '../../rooms/rooms.component';
+import { VideoChatComponent } from '../../video-chat/video-chat.component';
+import { SpacerockerComponent } from '../../spacerocker/spacerocker.component';
+import { FileSharingComponent } from '../../file-sharing/file-sharing.component';
+import { AboutComponent } from '../../about/about.component';
+import { HelpComponent } from '../../help/help.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -31,6 +40,13 @@ import { ToastrModule } from 'ngx-toastr';
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
+    EditorComponent,
+    RoomsComponent,
+    VideoChatComponent,
+    SpacerockerComponent,
+    FileSharingComponent,
+    AboutComponent,
+    HelpComponent,
   ]
 })
 
