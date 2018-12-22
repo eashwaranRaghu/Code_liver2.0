@@ -1,14 +1,21 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-
+declare var require: any;
 import * as ace from 'ace-builds';
-import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/theme-github';
-import 'ace-builds/src-noconflict/ext-language_tools';
-import 'ace-builds/src-noconflict/ext-beautify';
+//require("ace-builds/src-noconflict/mode-javascript")
+//import 'ace-builds/src-noconflict/mode-javascript';
+// import 'ace-builds/src-noconflict/theme-github';
+// import 'ace-builds/src-noconflict/ext-language_tools';
+// import 'ace-builds/src-noconflict/ext-beautify';
 
-const THEME = 'ace/theme/github';
+import 'brace/index';
+import 'brace/theme/monokai';
+import 'brace/mode/typescript';
+import 'brace/mode/javascript';
+import 'brace/ext/language_tools.js';
+
+/*const THEME = 'ace/theme/github';
 const LANG = 'ace/mode/javascript';
-
+*/
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -18,18 +25,17 @@ export class EditorComponent implements OnInit {
     @ViewChild('codeEditor') codeEditorElmRef: ElementRef;
     private codeEditor: ace.Ace.Editor;
     private editorBeautify;
-
   constructor() {
+    setTimeout(()=>{console.log(this.codeEditor.getValue())},5000)
   }
 
   ngOnInit() {
       ace.require("ace/ext/language_tools");
       const element = this.codeEditorElmRef.nativeElement;
       const editorOptions = this.getEditorOptions();
-
       this.codeEditor = ace.edit(element, editorOptions);
-      this.codeEditor.setTheme(THEME);
-      this.codeEditor.getSession().setMode(LANG);
+      this.codeEditor.setTheme('ace/theme/monokai');
+      this.codeEditor.getSession().setMode('ace/mode/javascript');
       this.codeEditor.setShowFoldWidgets(true); // for the scope fold feature
       this.editorBeautify = ace.require("ace/ext/beautify");
   }

@@ -1,4 +1,5 @@
-@media screen and (max-width: 9910px){
+@media screen and (min-width: 10px)
+{ //tab 991 max
     .profile-photo .profile-photo-small{
         margin-left: -2px;
     }
@@ -113,7 +114,7 @@
           @include transform-translate-x(260px);
       } */
         .main-panel{
-         //   left: 260px;
+            right: 0;
             width: calc(100% - 260px);
            // @include transform-translate-x(260px);
         }
@@ -121,7 +122,6 @@
         .sidebar{
             @include transform-translate-x(0px);
         }
-
         body{
             position: relative;
             overflow-x: hidden;
@@ -129,7 +129,7 @@
 
         .menu-on-right{
             .main-panel{
-                @include transform-translate-x(-260px);
+               // @include transform-translate-x(-260px);
             }
 
             .navbar-collapse,
@@ -138,7 +138,7 @@
             }
 
             .navbar-translate{
-                @include transform-translate-x(-300px);
+               // @include transform-translate-x(-300px);
             }
 
             #bodyClick{
@@ -152,7 +152,7 @@
         .sidebar{
             left: auto;
             right:0;
-            @include transform-translate-x(260px);
+          //  @include transform-translate-x(260px);
         }
     }
 
@@ -253,15 +253,12 @@
 
         @include transform-translate-x(-260px);
     }
-
-
-
     .main-panel{
         width: 100%;
     }
 }
 
-@media screen and (min-width: 9920px){
+@media screen and (min-width: 9920px){ //desktop min 992
     .navbar-collapse{
         background: none !important;
     }
@@ -301,7 +298,7 @@
     }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 8px){ //768
     .nav-tabs{
         display: inline-block;
         width: 100%;
@@ -337,7 +334,7 @@
     }
 }
 
-@media screen and (max-width: 576px){
+@media screen and (max-width: 6px){ //576
     .navbar[class*='navbar-toggleable-'] .container{
         margin-left: 0;
         margin-right: 0;

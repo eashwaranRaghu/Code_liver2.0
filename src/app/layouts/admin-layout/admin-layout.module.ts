@@ -14,7 +14,7 @@ import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 
-
+import { AceEditorModule } from 'ng2-ace-editor';
 import { EditorComponent } from '../../editor/editor.component';
 import { RoomsComponent } from '../../rooms/rooms.component';
 import { VideoChatComponent } from '../../video-chat/video-chat.component';
@@ -29,6 +29,7 @@ import { HelpComponent } from '../../help/help.component';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ChartsModule,
+    AceEditorModule,
     NgbModule,
     ToastrModule.forRoot()
   ],

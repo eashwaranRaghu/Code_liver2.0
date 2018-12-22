@@ -25,7 +25,9 @@
           "./assets/demo/demo.css"
       ],
       "scripts": [
-        "../node_modules/chart.js/dist/Chart.min.js"
+        "../node_modules/chart.js/dist/Chart.min.js",
+        "../node_modules/ace-builds/src-min/ace.js",
+        "../node_modules/ace-builds/src-min/theme-eclipse.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

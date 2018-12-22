@@ -1,12 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import * as Chartist from 'chartist';
-
+import { AceEditorComponent } from 'ng2-ace-editor';
+import 'brace/index';
+import 'brace/theme/eclipse';
+import 'brace/mode/typescript';
+import 'brace/mode/javascript';
+import 'brace/ext/language_tools.js';
+declare var ace: any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+/*
+     @ViewChild('editor') editor;
+    text: string = "hello";
+ 
+    ngAfterViewInit() {
+      setTimeout(()=>{
+         this.editor.setTheme("eclipse");
+        this.editor.getEditor().setOptions({
+            enableBasicAutocompletion: true
+        });
+        this.editor.getEditor().commands.addCommand({
+            name: "showOtherCompletions",
+            bindKey: "Ctrl-.",
+            exec: function (editor) {
+ 
+            }
+        })
+      },2000 );
+       
+    }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public lineBigDashboardChartType;
   public gradientStroke;
   public chartColor;

@@ -1,7 +1,6 @@
 
 <nav class="navbar  navbar-transparent  navbar-absolute bg-primary fixed-top">
     <div class="container-fluid">
-
         <div class="navbar-wrapper">
             <div class="navbar-toggle" style="color: #ff1744">
                 <button type="button" class="navbar-toggler" style="mix-blend-mode: difference;" (click)="sidebarToggle()">
@@ -12,14 +11,6 @@
             </div>
             <a class="navbar-brand" href="#pablo">{{getTitle()}}</a>
         </div>
-
-        <button class="navbar-toggler" type="button" (click)="collapse()"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-          <span class="navbar-toggler-bar navbar-kebab"></span>
-          <span class="navbar-toggler-bar navbar-kebab"></span>
-          <span class="navbar-toggler-bar navbar-kebab"></span>
-        </button>
-
         <div class="collapse navbar-collapse justify-content-end" id="collapseExample" [ngbCollapse]="isCollapsed">
           <form>
             <div class="input-group no-border">
