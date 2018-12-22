@@ -7,11 +7,7 @@
 
 # dependencies
 /node_modules
-<<<<<<< HEAD
 /src/environments
-=======
-/src/environment
->>>>>>> 5a6aa3a12f3f33649dadc627b5e4945317ac4d5f
 environment.ts
 environment.prod.ts
 
