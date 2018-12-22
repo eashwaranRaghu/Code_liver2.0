@@ -5,9 +5,13 @@ import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 import 'ace-builds/src-noconflict/ext-beautify';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 
 const THEME = 'ace/theme/github';
 const LANG = 'ace/mode/javascript';
+let roomNumber = '';
+const globalRoom = 'global';
 
 @Component({
   selector: 'app-editor',
@@ -18,8 +22,24 @@ export class EditorComponent implements OnInit {
     @ViewChild('codeEditor') codeEditorElmRef: ElementRef;
     private codeEditor: ace.Ace.Editor;
     private editorBeautify;
+    public editor: {};
+    public chat: {};
 
-  constructor() {
+  constructor(public db: AngularFireDatabase, public route: ActivatedRoute) {
+      route.paramMap.subscribe(s => {
+              roomNumber = s['params'].id;
+              let path = (roomNumber) ? roomNumber : globalRoom;
+              path = 'rooms/' + path;
+              console.log(path);
+          db.object((path) + '/editor').valueChanges().subscribe(editor => {
+              this.editor = editor;
+              this.codeEditor.setValue(editor.toString(), 1);
+          });
+          db.object((path) + '/chat').valueChanges().subscribe(chat => {
+              this.chat = chat;
+          });
+          }
+      );
   }
 
   ngOnInit() {
@@ -33,6 +53,25 @@ export class EditorComponent implements OnInit {
       this.codeEditor.setShowFoldWidgets(true); // for the scope fold feature
       this.editorBeautify = ace.require("ace/ext/beautify");
   }
+
+    public pushEditor() {
+      console.log('keyup', this.codeEditor.getCursorPosition());
+        let currentRoute = 'global';
+      /*if (this.route.paramMap['params'] && this.route.paramMap['params'].id){
+          currentRoute = this.route.paramMap['params'].id;
+      }*/
+        this.db.list('rooms').update(currentRoute, {editor: this.codeEditor.getValue()});
+    }
+    public pushChat() {
+        const currentRoute = this.route.paramMap['params'].id || 'global';
+        this.db.list('rooms').update(currentRoute, {chat: this.chat});
+    }
+    public setTheme(message) {
+    }
+    public setLanguage(message) {
+    }
+    public setTabSize(message) {
+    }
 
     private getEditorOptions(): Partial<ace.Ace.EditorOptions> & { enableBasicAutocompletion?: boolean; } {
         const basicEditorOptions: Partial<ace.Ace.EditorOptions> = {
