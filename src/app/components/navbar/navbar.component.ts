@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    public isCollapsed = true;
+    public isCollapsed = false;
 
     constructor(location: Location,  private element: ElementRef, private router: Router) {
       this.location = location;
@@ -150,6 +150,6 @@ export class NavbarComponent implements OnInit {
               return this.listTitles[item].title;
           }
       }
-      return 'Dashboard';
+      return '';
     }
 }

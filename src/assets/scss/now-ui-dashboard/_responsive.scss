@@ -1,4 +1,4 @@
-@media screen and (max-width: 991px){
+@media screen and (max-width: 9910px){
     .profile-photo .profile-photo-small{
         margin-left: -2px;
     }
@@ -108,9 +108,14 @@
     }
 
     .nav-open{
+      /*   .navbar-toggle{
+          right: 0;
+          @include transform-translate-x(260px);
+      } */
         .main-panel{
-            right: 0;
-            @include transform-translate-x(260px);
+         //   left: 260px;
+            width: calc(100% - 260px);
+           // @include transform-translate-x(260px);
         }
 
         .sidebar{
@@ -256,7 +261,7 @@
     }
 }
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 9920px){
     .navbar-collapse{
         background: none !important;
     }
