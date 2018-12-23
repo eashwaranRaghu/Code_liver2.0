@@ -86,12 +86,16 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.codeEditor.getSession().setMode(localStorage.getItem('mode') || MODE);
       this.codeEditor.setShowFoldWidgets(true); // for the scope fold feature
       this.editorBeautify = ace.require('ace/ext/beautify');
+<<<<<<< HEAD
+      
+=======
       this.codeEditor.on('change', (e) => {
           console.log(e);
           if (this.applyingDeltas) {return; }
           this.pushEditor(e);
           }
       );
+>>>>>>> 6d22408644895be16126c5e3aac20f51ece77e06
   }
 
     public pushEditor(e) {
