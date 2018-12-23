@@ -1,15 +1,21 @@
 
-<nav class="navbar  navbar-transparent  navbar-absolute bg-primary fixed-top" style="background-color: black">
+<nav class="navbar  navbar-transparent  navbar-absolute bg-primary fixed-top" style="background-color: black;">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-            <div class="navbar-toggle" style="color: #ff1744">
+            <div class="navbar-toggle" >
                 <button type="button" class="navbar-toggler" style="mix-blend-mode: difference;" (click)="sidebarToggle()">
                     <span class="navbar-toggler-bar bar1"></span>
                     <span class="navbar-toggler-bar bar2"></span>
                     <span class="navbar-toggler-bar bar3"></span>
                 </button>
             </div>
-            <a class="navbar-brand" >{{data.displaynow}}</a>
+            <a class="navbar-brand" style="cursor: pointer;" >{{data.displaynow}}</a>
+            
         </div>
+        <button  class="btn btn-outline-primary"  style="background-color: #ff1744;right: 0;margin-right: 2vw;">
+
+              <i class="now-ui-icons ui-2_chat-round" style="transform: scale(1.4);"></i>&nbsp;&nbsp;&nbsp;
+              Open Chat
+            </button>
     </div>
 </nav>
