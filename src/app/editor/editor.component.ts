@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 declare var require: any;
 import * as ace from 'ace-builds';
 
@@ -14,11 +14,12 @@ import 'brace/ext/language_tools.js';
 // import 'ace-builds/src-noconflict/ext-beautify';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
-
-const THEME = 'ace/theme/github';
-const LANG = 'ace/mode/javascript';
+import {Subscription} from 'rxjs/Rx';
+const themes = ['Chrome', 'Clouds', 'Clouds Midnight', 'Cobalt', 'Crimson Editor', 'Dawn', 'Eclipse', 'Idle Fingers', 'Kr Theme', 'Merbivore', 'Merbivore Soft', 'Mono Industrial', 'Monokai', 'Pastel On Dark', 'Solarized Dark', 'Solarized Light', 'TextMate', 'Tomorrow', 'Tomorrow Night', 'Tomorrow Night Blue', 'Tomorrow Night Bright', 'Tomorrow Night Eighties', 'Twilight', 'Vibrant Ink'];
+const modes = ['C_Cpp', 'Clojure', 'Cobol', 'CSharp', 'CSS', 'Dart', 'EJS', 'Elixir', 'golang', 'HTML', 'Java', 'JavaScript', 'JSON', 'LaTeX', 'PHP', 'Python', 'R', 'Ruby', 'Rust', 'SASS', 'Scala', 'SCSS', 'SH', 'snippets', 'SQL', 'Tex', 'Text'];
+const THEME = 'ace/theme/monokai';
+const MODE = 'ace/mode/javascript';
 let roomNumber = '';
-const globalRoom = 'global';
 
 /*const THEME = 'ace/theme/github';
 const LANG = 'ace/mode/javascript';
@@ -28,60 +29,84 @@ const LANG = 'ace/mode/javascript';
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss']
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, OnDestroy {
     @ViewChild('codeEditor') codeEditorElmRef: ElementRef;
     private codeEditor: ace.Ace.Editor;
     private editorBeautify;
+    public subscriptionEditor: Subscription;
+    public subscriptionChat: Subscription;
     public editor: {};
     public chat: {};
 
-  constructor(public db: AngularFireDatabase, public route: ActivatedRoute) {
-      route.paramMap.subscribe(s => {
-              roomNumber = s['params'].id;
-              let path = (roomNumber) ? roomNumber : globalRoom;
-              path = 'rooms/' + path;
-          db.object((path) + '/editor').valueChanges().subscribe(editor => {
-              this.editor = editor;
-              this.codeEditor.setValue(editor.toString(), 1);
-          });
-          db.object((path) + '/chat').valueChanges().subscribe(chat => {
-              this.chat = chat;
-          });
-          }
-      );
+  constructor(public db: AngularFireDatabase) {
+      roomNumber = localStorage.getItem('room');
+      let path = roomNumber;
+      if (path) {
+          path = 'rooms/' + path;
+      } else {
+          path = 'rooms/global'
+      }
+      this.subscriptionEditor = db.object((path) + '/editor').valueChanges().subscribe(editor => {
+          this.editor = editor;
+          this.codeEditor.setValue(editor.toString(), 1);
+      });
+      this.subscriptionChat = db.object((path) + '/chat').valueChanges().subscribe(chat => {
+          this.chat = chat;
+      });
+  }
+  ngOnDestroy() {
+      this.subscriptionEditor.unsubscribe();
+      this.subscriptionChat.unsubscribe();
   }
 
   ngOnInit() {
-      ace.require("ace/ext/language_tools");
+      ace.require('ace/ext/language_tools');
       const element = this.codeEditorElmRef.nativeElement;
       const editorOptions = this.getEditorOptions();
       this.codeEditor = ace.edit(element, editorOptions);
-      this.codeEditor.setTheme('ace/theme/monokai');
-      this.codeEditor.getSession().setMode('ace/mode/javascript');
+      this.codeEditor.setTheme(localStorage.getItem('theme') || THEME);
+      this.codeEditor.getSession().setMode(localStorage.getItem('mode') || MODE);
       this.codeEditor.setShowFoldWidgets(true); // for the scope fold feature
-      this.editorBeautify = ace.require("ace/ext/beautify");
+      this.editorBeautify = ace.require('ace/ext/beautify');
   }
 
     public pushEditor() {
-      let currentRoute = 'global';
-      if (this.route.snapshot.paramMap['params']){
-          if (this.route.snapshot.paramMap['params'].id){
-              currentRoute = this.route.snapshot.paramMap['params'].id;
-          }
-      }
+        let currentRoute = roomNumber;
+        if (!currentRoute) {
+            currentRoute = 'global';
+        }
         this.db.list('rooms').update(currentRoute, {editor: this.codeEditor.getValue()});
     }
     public pushChat() {
-        const currentRoute = this.route.paramMap['params'].id || 'global';
+        const currentRoute = roomNumber || 'global';
         this.db.list('rooms').update(currentRoute, {chat: this.chat});
     }
-    public setTheme(message) {
+    public setTheme(theme: string) {
+      this.codeEditor.setTheme(theme);
+      localStorage.setItem('theme', theme);
     }
-    public setLanguage(message) {
+    public setLanguage(mode: string) {
+        this.codeEditor.getSession().setMode(mode);
+        localStorage.setItem('mode', mode);
     }
-    public setTabSize(message) {
+    public setTabSize(tab: number) {
+        this.codeEditor.getSession().setTabSize(tab);
+        localStorage.setItem('tab', tab.toString());
     }
-
+    public setFontSize(size: string) {
+        this.codeEditor.setFontSize(size);
+        localStorage.setItem('size', size);
+    }
+    public beautifyContent() {
+        if (this.codeEditor && this.editorBeautify) {
+            const session = this.codeEditor.getSession();
+            this.editorBeautify.beautify(session);
+        }
+    }
+    public getCode() {
+        const code = this.codeEditor.getValue();
+        console.log(code);
+    }
     private getEditorOptions(): Partial<ace.Ace.EditorOptions> & { enableBasicAutocompletion?: boolean; } {
         const basicEditorOptions: Partial<ace.Ace.EditorOptions> = {
             highlightActiveLine: true,
@@ -94,20 +119,6 @@ export class EditorComponent implements OnInit {
         const margedOptions = Object.assign(basicEditorOptions, extraEditorOptions);
         return margedOptions;
     }
-
-    public beautifyContent() {
-        if (this.codeEditor && this.editorBeautify) {
-            const session = this.codeEditor.getSession();
-            this.editorBeautify.beautify(session);
-        }
-    }
-
-    private getCode() {
-        const code = this.codeEditor.getValue();
-        console.log(code);
-    }
-
-
 }
 //   https://github.com/ajaxorg/ace-builds
 //   https://medium.com/@ofir3322/create-an-online-ide-with-angular-6-nodejs-part-1-163a939a7929

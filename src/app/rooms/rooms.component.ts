@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
-
+import 'rxjs/add/operator/take';
+let rooms = [];
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
@@ -9,8 +10,11 @@ import {AngularFireDatabase} from '@angular/fire/database';
 export class RoomsComponent implements OnInit {
 
   constructor(db: AngularFireDatabase) {
-      db.object('rooms').valueChanges().subscribe( s => {
-              console.log(s);
+      db.object('rooms').valueChanges().take(1).subscribe( s => {
+          /*console.log(s);
+          for (let k in s) {
+              console.log(k);
+          }*/
           }
       );
       /*for(let i =1; i<=100; i++){
