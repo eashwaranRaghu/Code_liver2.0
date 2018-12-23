@@ -16,7 +16,6 @@ import 'brace/ext/language_tools.js';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
-import {QueElement} from '../que-element';
 const themes = ['Chrome', 'Clouds', 'Clouds Midnight', 'Cobalt', 'Crimson Editor', 'Dawn', 'Eclipse', 'Idle Fingers', 'Kr Theme', 'Merbivore', 'Merbivore Soft', 'Mono Industrial', 'Monokai', 'Pastel On Dark', 'Solarized Dark', 'Solarized Light', 'TextMate', 'Tomorrow', 'Tomorrow Night', 'Tomorrow Night Blue', 'Tomorrow Night Bright', 'Tomorrow Night Eighties', 'Twilight', 'Vibrant Ink'];
 const modes = ['C_Cpp', 'Clojure', 'Cobol', 'CSharp', 'CSS', 'Dart', 'EJS', 'Elixir', 'golang', 'HTML', 'Java', 'JavaScript', 'JSON', 'LaTeX', 'PHP', 'Python', 'R', 'Ruby', 'Rust', 'SASS', 'Scala', 'SCSS', 'SH', 'snippets', 'SQL', 'Tex', 'Text'];
 const THEME = 'ace/theme/monokai';
@@ -88,16 +87,13 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.codeEditor.getSession().setMode(localStorage.getItem('mode') || MODE);
       this.codeEditor.setShowFoldWidgets(true); // for the scope fold feature
       this.editorBeautify = ace.require('ace/ext/beautify');
-<<<<<<< HEAD
-      
-=======
+
       this.codeEditor.on('change', (e) => {
           console.log(e);
           if (this.applyingDeltas) {return; }
           this.pushEditor(e);
           }
       );
->>>>>>> 6d22408644895be16126c5e3aac20f51ece77e06
   }
 
     public pushEditor(e) {
