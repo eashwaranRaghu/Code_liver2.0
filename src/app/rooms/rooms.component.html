@@ -1,6 +1,6 @@
 <div class="panel-header panel-header-sm">
 </div>
-<div class="main-content">
+<!-- <div class="main-content">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -8,17 +8,52 @@
           <h5 class="title">Rooms</h5>
           <p class="category">Select a room to enter</p>
         </div>
-
+        
+        
         <div class="card-body all-icons">
           <div class="row">
             <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
               <div class="font-icon-detail">
-                <p>Room</p>
+                
+                  <p style="color: black; transform: scale(1.3);">{{room.value.roomNumber}}</p>  
+               
+                
               </div>
             </div>
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Rooms</h5>
+        </div>
+
+        <div class="card-body all-icons">
+          <div class="row">
+        <ng-container *ngFor="let room of rooms">
+            <div class="font-icon-list col-lg-1 col-md-2 col-sm-3 col-xs-4" (click)="redir(room.roomid)" >
+              <div class="font-icon-detail">
+                <p>{{room.value.roomNumber}}</p>
+              </div>
+            </div>
+          </ng-container>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
