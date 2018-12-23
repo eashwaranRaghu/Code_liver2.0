@@ -20,13 +20,13 @@
       "prefix": "app",
       "styles": [
           "../node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
-          "../node_modules/moment/min/moment.min.js",
           "../node_modules/ngx-toastr/toastr.css",
           "./assets/scss/now-ui-dashboard.scss",
           "./assets/demo/demo.css"
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.min.js",
+        "../node_modules/moment/min/moment.min.js",
         "../node_modules/ace-builds/src-min/ace.js",
         "../node_modules/ace-builds/src-min/theme-eclipse.js"
       ],

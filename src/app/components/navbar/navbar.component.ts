@@ -4,6 +4,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { Router } from '@angular/router';
 import Chart from 'chart.js';
 
+import {DataService} from '../../data.service'
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -18,13 +19,13 @@ export class NavbarComponent implements OnInit , AfterViewInit{
 
     public isCollapsed = true;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(public data: DataService, location: Location,  private element: ElementRef, private router: Router) {
       this.location = location;
           this.sidebarVisible = false;
          // this.sidebarOpen();
     }
     ngAfterViewInit(){
-      
+
        this.sidebarToggle();
     }
     ngOnInit(){
