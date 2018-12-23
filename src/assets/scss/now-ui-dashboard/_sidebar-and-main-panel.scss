@@ -114,7 +114,7 @@
             }
 
             &.active > a{
-              background-color: #247df7;
+              background-color: #2992fc;
               box-shadow: $box-shadow;
             }
         }
@@ -265,6 +265,9 @@
     }
     &[data-color="default"]{
       @include sidebar-color(#0e1626);
+    }
+     &[data-color="black"]{
+      @include sidebar-color(black);
     }
     &[data-color="red"]{
       @include sidebar-color($danger-color);
