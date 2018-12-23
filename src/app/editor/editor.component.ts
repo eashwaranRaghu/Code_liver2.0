@@ -14,7 +14,6 @@ import 'brace/ext/language_tools.js';
 // import 'ace-builds/src-noconflict/ext-language_tools';
 // import 'ace-builds/src-noconflict/ext-beautify';
 import {AngularFireDatabase} from '@angular/fire/database';
-import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
 const themes = ['Chrome', 'Clouds', 'Clouds Midnight', 'Cobalt', 'Crimson Editor', 'Dawn', 'Eclipse', 'Idle Fingers', 'Kr Theme', 'Merbivore', 'Merbivore Soft', 'Mono Industrial', 'Monokai', 'Pastel On Dark', 'Solarized Dark', 'Solarized Light', 'TextMate', 'Tomorrow', 'Tomorrow Night', 'Tomorrow Night Blue', 'Tomorrow Night Bright', 'Tomorrow Night Eighties', 'Twilight', 'Vibrant Ink'];
 const modes = ['C_Cpp', 'Clojure', 'Cobol', 'CSharp', 'CSS', 'Dart', 'EJS', 'Elixir', 'golang', 'HTML', 'Java', 'JavaScript', 'JSON', 'LaTeX', 'PHP', 'Python', 'R', 'Ruby', 'Rust', 'SASS', 'Scala', 'SCSS', 'SH', 'snippets', 'SQL', 'Tex', 'Text'];
@@ -89,9 +88,9 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.editorBeautify = ace.require('ace/ext/beautify');
 
       this.codeEditor.on('change', (e) => {
-          console.log(e);
-          if (this.applyingDeltas) {return; }
-          this.pushEditor(e);
+              console.log(e);
+              if (this.applyingDeltas) {return; }
+              this.pushEditor(e);
           }
       );
   }
@@ -101,7 +100,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         if (!currentRoute) {
             currentRoute = '-LUS89ZHUPyuOuycs0ql';
         }
-        this.db.list('rooms').update(currentRoute + '/editor/code', {editor: this.codeEditor.getValue()});
+        this.db.list('rooms').update(currentRoute + '/editor/code', this.codeEditor.getValue());
         this.db.list('rooms/' + currentRoute + '/editor/queue').push({stamp: Date.now(), event: e, user: this.userid}).then( s => {console.log(s) });
     }
     public applyDeltas(delta) {
