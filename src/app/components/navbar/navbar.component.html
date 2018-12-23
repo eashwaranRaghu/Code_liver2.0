@@ -12,10 +12,25 @@
             <a class="navbar-brand" style="cursor: pointer;" >{{data.displaynow}}</a>
             
         </div>
-        <button  class="btn btn-outline-primary"  style="background-color: #ff1744;right: 0;margin-right: 2vw;">
+        <div style="background-color: transparent;display: flex; flex-direction: row;align-content: center;justify-content: space-around; flex-wrap: wrap;">
+        <div>
 
-              <i class="now-ui-icons ui-2_chat-round" style="transform: scale(1.4);"></i>&nbsp;&nbsp;&nbsp;
-              Open Chat
-            </button>
+          <div  ngbDropdown class="ps-this" style="position: relative;" >
+    <button id="dropdownConfig2" class="btn btn-sm btn-outline-primary"  style="background-color: black " ngbDropdownToggle>
+      Themes
+    </button>
+    <div class="ps-this ps-container scrollbar-y-right" style="position: absolute;" id="ps-this" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="background-color: black; cursor: pointer;color: white; height: 30vh;max-height: 200px;max-width: 50px; overflow-y: hidden;scrollbar-x: left; ">
+
+      <a class="dropdown-item" style="color: white">Dawn</a>
+      <a class="dropdown-item" style="color: white">Cobalt</a>
+      <a class="dropdown-item" style="color: white">Clouds</a>
+      <a class="dropdown-item" style="color: white">Chrome</a>
+      <a class="dropdown-item" style="color: white">Chrome</a>
+      <a class="dropdown-item" style="color: white">Chrome</a>
+        </div>
+      </div></div>
+  <div><button  class="btn btn-sm btn-outline-primary"  style="background-color: black; margin: 5px">Languages</button></div>
+  <div><button  class="btn btn-sm btn-outline-primary nav-item"  style="background-color: black;margin: 5px">Wrap</button></div>
+</div>
     </div>
 </nav>
