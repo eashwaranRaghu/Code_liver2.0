@@ -48,7 +48,9 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
       this.subscriptionEditor = db.object((path) + '/editor').valueChanges().subscribe(editor => {
           this.editor = editor;
-          this.codeEditor.setValue(editor.toString(), 1);
+          if (editor.toString() !== this.codeEditor.getValue()) {
+              this.codeEditor.getSession().setValue(editor.toString());
+          }
       });
       this.subscriptionChat = db.object((path) + '/chat').valueChanges().subscribe(chat => {
           this.chat = chat;
