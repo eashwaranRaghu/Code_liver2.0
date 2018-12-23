@@ -55,7 +55,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       if (path) {
           path = 'rooms/' + path;
       } else {
-          path = 'rooms/-LUMeONa9vbjMvrOgTzO'
+          path = 'rooms/-LUS89ZHUPyuOuycs0ql'
       }
       this.subscriptionEditor = db.object((path) + '/editor/code').valueChanges().take(1).subscribe(editor => {
           this.editor = editor;
@@ -99,7 +99,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     public pushEditor(e) {
         let currentRoute = roomNumber;
         if (!currentRoute) {
-            currentRoute = '-LUMeONa9vbjMvrOgTzO';
+            currentRoute = '-LUS89ZHUPyuOuycs0ql';
         }
         this.db.list('rooms').update(currentRoute + '/editor/code', {editor: this.codeEditor.getValue()});
         this.db.list('rooms/' + currentRoute + '/editor/queue').push({stamp: Date.now(), event: e, user: this.userid}).then( s => {console.log(s) });
@@ -108,7 +108,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.codeEditor.getSession().getDocument().applyDelta(delta);
     }
     public pushChat() {
-        const currentRoute = roomNumber || '-LUMeONa9vbjMvrOgTzO';
+        const currentRoute = roomNumber || '-LUS89ZHUPyuOuycs0ql';
         this.db.list('rooms').update(currentRoute, {chat: this.chat});
     }
     public setTheme(theme: string) {
