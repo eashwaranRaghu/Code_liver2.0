@@ -37,9 +37,11 @@ export class EditorComponent implements OnInit, OnDestroy {
     public subscriptionChat: Subscription;
     public editor: {};
     public chat: {};
+    public wrap: boolean;
 
   constructor(public db: AngularFireDatabase) {
       roomNumber = localStorage.getItem('room');
+      this.wrap = false;
       let path = roomNumber;
       if (path) {
           path = 'rooms/' + path;
@@ -70,7 +72,6 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.codeEditor = ace.edit(element, editorOptions);
       this.codeEditor.setTheme(localStorage.getItem('theme') || THEME);
       this.codeEditor.getSession().setMode(localStorage.getItem('mode') || MODE);
-      //this.codeEditor.getSession().setUseWrapMode(true);
       this.codeEditor.setShowFoldWidgets(true); // for the scope fold feature
       this.editorBeautify = ace.require('ace/ext/beautify');
   }
@@ -101,6 +102,10 @@ export class EditorComponent implements OnInit, OnDestroy {
     public setFontSize(size: string) {
         this.codeEditor.setFontSize(size);
         localStorage.setItem('size', size);
+    }
+    public toggleWrap() {
+        this.wrap = (!this.wrap);
+        this.codeEditor.getSession().setUseWrapMode(this.wrap);
     }
     public beautifyContent() {
         if (this.codeEditor && this.editorBeautify) {
