@@ -44,7 +44,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       if (path) {
           path = 'rooms/' + path;
       } else {
-          path = 'rooms/global'
+          path = 'rooms/-LUMeONa9vbjMvrOgTzO'
       }
       this.subscriptionEditor = db.object((path) + '/editor').valueChanges().subscribe(editor => {
           this.editor = editor;
@@ -73,12 +73,12 @@ export class EditorComponent implements OnInit, OnDestroy {
     public pushEditor() {
         let currentRoute = roomNumber;
         if (!currentRoute) {
-            currentRoute = 'global';
+            currentRoute = '-LUMeONa9vbjMvrOgTzO';
         }
         this.db.list('rooms').update(currentRoute, {editor: this.codeEditor.getValue()});
     }
     public pushChat() {
-        const currentRoute = roomNumber || 'global';
+        const currentRoute = roomNumber || '-LUMeONa9vbjMvrOgTzO';
         this.db.list('rooms').update(currentRoute, {chat: this.chat});
     }
     public setTheme(theme: string) {
