@@ -64,7 +64,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           // console.log(editor);
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
       });
-      this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges().subscribe(queue => {
+      this.subscriptionEditor = db.list((path) + '/editor/queue', ref => ref.orderByKey().limitToLast(1)).valueChanges(['child_added']).subscribe(queue => {
           this.que = queue;
           const element = this.que[this.que.length - 1];
           // console.log(element);
