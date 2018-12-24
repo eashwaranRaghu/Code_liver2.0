@@ -64,11 +64,16 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
           this.applyingDeltas = false;
       });
-      // this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => {
+      this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => { console.log(1, queue[0]) });
       this.subscriptionEditor = db.list((path) + '/editor/queue').stateChanges(['child_added']).subscribe(queue => {
           const element = queue.payload.toJSON();
-          console.log(element);
-          if (element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
+          const keys = Object.keys(element['event']['lines']);
+          let lines = [];
+          keys.forEach( k => {
+              lines.push(element['event']['lines'][k])
+          });
+          element['event']['lines'] = lines;
+          if (element && element['stamp'] > this.stamp && element['user'].toString() !== this.userid) {
               this.applyDeltas2(element['event']);
           }
       });
@@ -109,7 +114,8 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
     public applyDeltas2(delta) {
         this.applyingDeltas = true;
-        this.codeEditor.getSession().getDocument().applyDeltas([delta]);
+        console.log('applying Delta');
+        this.codeEditor.getSession().getDocument().applyDelta(delta);
         this.applyingDeltas = false;
     }
     public pushChat() {
