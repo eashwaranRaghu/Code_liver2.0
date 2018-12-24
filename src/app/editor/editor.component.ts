@@ -68,7 +68,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.que = queue;
           const element = this.que[this.que.length - 1];
           if (element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
-              this.applyDeltas(element['event']);
+              this.applyDeltas2(element['event']);
           }
       });
       this.subscriptionChat = db.object((path) + '/chat').valueChanges().subscribe(chat => {
@@ -106,9 +106,9 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.db.list('rooms').update(currentRoute + '/editor', {code: this.codeEditor.getValue()}).then( s => {/*console.log('code', s) */});
         this.db.list('rooms/' + currentRoute + '/editor/queue').push({stamp: Date.now(), event: e, user: this.userid}).then( s => {/*console.log('queue', s) */});
     }
-    public applyDeltas(delta) {
+    public applyDeltas2(delta) {
         this.applyingDeltas = true;
-        const x = this.codeEditor.getSession().getDocument().applyDeltas([delta]);
+        this.codeEditor.getSession().getDocument().applyDeltas([delta]);
         this.applyingDeltas = false;
     }
     public pushChat() {
