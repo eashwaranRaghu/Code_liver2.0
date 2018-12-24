@@ -23,6 +23,7 @@ import { FileSharingComponent } from '../../file-sharing/file-sharing.component'
 import { AboutComponent } from '../../about/about.component';
 import { HelpComponent } from '../../help/help.component';
 import { SafePipe } from '../../safe.pipe';
+import {StorageBucket} from '@angular/fire/storage';
 @NgModule({
   imports: [
     CommonModule,
@@ -49,7 +50,12 @@ import { SafePipe } from '../../safe.pipe';
     AboutComponent,
     HelpComponent,
     SafePipe,
-  ]
+    DropZoneDirective,
+    FileSizePipe
+  ],
+    providers: [
+        { provide: StorageBucket, useValue: 'codeliver-v2' }
+    ]
 })
 
 export class AdminLayoutModule {}

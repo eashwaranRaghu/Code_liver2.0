@@ -1,27 +1,24 @@
 <div style="background-color: black;padding-top: 60px"></div>
 
 
-
-
-
-<div  style="padding-top: 0px;background-color: black; overflow-x: hidden;">
+<div class="main-content" style="margin-top:50px;">
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
+      <div class="card" style="background-color: #27293d;">
         <div class="card-header">
-          <h5 class="title" style="color: #6e3670">Rooms</h5>
-        </div>
-        <div class="card-body all-icons" style="color: #6e3670">
-          <div class="row">
-        <ng-container *ngFor="let room of rooms">
-            <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6" (click)="redir(room.roomid,room.value.roomNumber)" >
-              <div class="font-icon-detail">
-                <img src="assets/img/codeliver.png" width="100%" height="100%" alt="">
-                <p style="color: #6e3670; z-index: 100" >{{room.value.roomNumber}}</p>
-              </div>
-            </div>
-          </ng-container>
+          <h5 class="title" style="color: white;">Select Room to enter</h5>
 
+        </div>
+        <div class="card-body all-icons">
+          <div class="row">
+            <ng-container *ngFor="let room of rooms">
+              <div style="cursor:pointer;" class="hovr font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6" (click)="redir(room.roomid,room.value.roomNumber)" >
+                <div class="font-icon-detail">
+                  <h3 style="color: white;">Room</h3>
+                  <p style="color: white; z-index: 100;transform: scale(1.5)" >{{room.value.roomNumber}}</p>
+                </div>
+              </div>
+            </ng-container>
           </div>
         </div>
       </div>

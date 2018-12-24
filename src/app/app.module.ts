@@ -16,6 +16,8 @@ import { ComponentsModule } from './components/components.module';
 import {DataService} from './data.service'
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { DropZoneDirective } from './drop-zone.directive';
+import { FileSizePipe } from './file-size.pipe';
 
 @NgModule({
   imports: [
@@ -32,7 +34,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    AdminLayoutComponent
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
