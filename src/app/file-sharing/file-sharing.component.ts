@@ -30,3 +30,6 @@ export class FileSharingComponent implements OnInit {
     }
 
 }
+
+// https://github.com/angular/angularfire2/blob/master/docs/storage/storage.md
+// https://angularfirebase.com/lessons/firebase-storage-with-angularfire-dropzone-file-uploader/
