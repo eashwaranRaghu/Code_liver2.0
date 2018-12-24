@@ -64,10 +64,10 @@ export class EditorComponent implements OnInit, OnDestroy {
           // console.log(editor);
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
       });
-      this.subscriptionEditor = db.list((path) + '/editor/queue', ref => ref.orderByKey().limitToLast(1)).valueChanges(['child_added']).subscribe(queue => {
+      this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => {
           this.que = queue;
           const element = this.que[this.que.length - 1];
-          //console.log(element);
+          //console.log(1, element , 2, parseInt(element['stamp']) , this.stamp , 3, element['user'] !== this.userid);
           if (element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
               this.applyingDeltas = true;
               this.applyDeltas(element['event']);
