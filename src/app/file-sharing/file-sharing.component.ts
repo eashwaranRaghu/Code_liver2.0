@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs/Rx';
+import {finalize} from 'rxjs/operators';
 
 @Component({
     selector: 'app-file-sharing',
