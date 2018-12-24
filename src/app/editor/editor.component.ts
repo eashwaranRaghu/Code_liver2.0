@@ -64,7 +64,7 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
           this.applyingDeltas = false;
       });
-      this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => { console.log(1, queue[0]) });
+      // this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => { console.log(1, queue[0]) });
       this.subscriptionEditor = db.list((path) + '/editor/queue').stateChanges(['child_added']).subscribe(queue => {
           const element = queue.payload.toJSON();
           const keys = Object.keys(element['event']['lines']);
