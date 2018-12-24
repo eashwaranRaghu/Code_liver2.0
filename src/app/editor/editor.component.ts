@@ -67,8 +67,8 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.subscriptionEditor = db.list((path) + '/editor/queue', ref => ref.orderByKey().limitToLast(1)).valueChanges(['child_added']).subscribe(queue => {
           this.que = queue;
           const element = this.que[this.que.length - 1];
-          // console.log(element);
-          if (element['stamp'] > this.stamp && element['user'] !== this.userid) {
+          //console.log(element);
+          if (element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
               this.applyingDeltas = true;
               this.applyDeltas(element['event']);
               this.applyingDeltas = false;
