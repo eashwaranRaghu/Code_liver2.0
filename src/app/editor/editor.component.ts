@@ -20,7 +20,7 @@ const modes = ['C_Cpp', 'Clojure', 'Cobol', 'CSharp', 'CSS', 'Dart', 'EJS', 'Eli
 const THEME = 'ace/theme/monokai';
 const MODE = 'ace/mode/javascript';
 let roomNumber = '';
-let global = '-LUVP3qKecKyTP_nlmh0';
+const global = '-LUVP3qKecKyTP_nlmh0';
 
 import {DataService} from '../data.service'
 /*const THEME = 'ace/theme/github';
@@ -47,7 +47,6 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   constructor(public db: AngularFireDatabase, public data: DataService) {
     this.data.editorbool = true;
-      // this.db.object('.info').valueChanges().subscribe(s => {console.log('users', s); });
       roomNumber = localStorage.getItem('room');
       this.wrap = false;
       this.applyingDeltas = false;
@@ -61,13 +60,11 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
       this.subscriptionEditor = db.object((path) + '/editor/code').valueChanges().take(1).subscribe(editor => {
           this.editor = editor;
-          // console.log(editor);
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
       });
       this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => {
           this.que = queue;
           const element = this.que[this.que.length - 1];
-          //console.log(1, element , 2, parseInt(element['stamp']) , this.stamp , 3, element['user'] !== this.userid);
           if (element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
               this.applyingDeltas = true;
               this.applyDeltas(element['event']);
@@ -92,7 +89,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.codeEditor.getSession().setMode(localStorage.getItem('mode') || MODE);
       this.codeEditor.setShowFoldWidgets(true); // for the scope fold feature
       this.editorBeautify = ace.require('ace/ext/beautify');
-
+      this.codeEditor.focus();
       this.codeEditor.on('change', (e) => {
               // console.log(e);
               if (this.applyingDeltas) {return; }
@@ -110,7 +107,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.db.list('rooms/' + currentRoute + '/editor/queue').push({stamp: Date.now(), event: e, user: this.userid}).then( s => {/*console.log('queue', s) */});
     }
     public applyDeltas(delta) {
-        this.codeEditor.getSession().getDocument().applyDelta(delta);
+        this.codeEditor.getSession().getDocument().applyDeltas([delta]);
     }
     public pushChat() {
         const currentRoute = roomNumber || global;
@@ -120,7 +117,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.codeEditor.setTheme(theme);
       localStorage.setItem('theme', theme);
     }
-    public setLanguage(mode: string){
+    public setLanguage(mode: string) {
         this.codeEditor.getSession().setMode(mode);
         localStorage.setItem('mode', mode);
     }
