@@ -107,7 +107,6 @@ export class EditorComponent implements OnInit, OnDestroy {
     }
 
     public applyDeltas2(delta) {
-
         this.applyingDeltas = true;
         this.codeEditor.getSession().getDocument().applyDeltas([delta]);
         this.applyingDeltas = false;
