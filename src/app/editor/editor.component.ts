@@ -60,7 +60,9 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
       this.subscriptionEditor = db.object((path) + '/editor/code').valueChanges().take(1).subscribe(editor => {
           this.editor = editor;
+          this.applyingDeltas = true;
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
+          this.applyingDeltas = false;
       });
       this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => {
           this.que = queue;
