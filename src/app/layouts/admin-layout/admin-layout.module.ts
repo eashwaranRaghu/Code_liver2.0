@@ -23,6 +23,8 @@ import { FileSharingComponent } from '../../file-sharing/file-sharing.component'
 import { AboutComponent } from '../../about/about.component';
 import { HelpComponent } from '../../help/help.component';
 import { SafePipe } from '../../safe.pipe';
+import {DropZoneDirective} from '../../drop-zone.directive';
+import {FileSizePipe} from '../../file-size.pipe';
 import {StorageBucket} from '@angular/fire/storage';
 @NgModule({
   imports: [
