@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 
-$green: #86BB71;
-$blue: #94C2ED;
+$green: #344675;
+$blue: #344675;
 $orange: #E38968;
-$gray: #92959E;
+$gray: #d13484;
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -45,17 +45,7 @@ body {
     left: -25px;
   }
   
-  ul {
-    padding: 20px;
-    height: 770px;
  
-    
-    
-    
-    li {
-      padding-bottom: 20px;
-    }
-  }
   
   img {
     float: left;
@@ -77,14 +67,17 @@ body {
 }
 
 .chat {
-  border-radius:5%;
   width: 100%;
- // margin-right: 100px;
   max-width: 350px;
+  transition-timing-function: linear;
+  transition: width 1s;
+
   float:right;
-  background: #27293d;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  background: #27293d; 
+  border-top-right-radius: 5%;
+  border-top-left-radius: 5%;
+  border-bottom-right-radius: 2%;
+  border-bottom-left-radius: 2%;
   
   color: #419ef9;
   
@@ -104,7 +97,7 @@ body {
     
     .chat-with {
       font-weight: bold;
-      font-size: 16px;
+      font-size: 13px;
     }
     
     .chat-num-messages {
@@ -114,39 +107,38 @@ body {
     .fa-star {
       float: right;
       color: #D8DADF;
-      font-size: 20px;
+      font-size: 12px;
       margin-top: 12px;
     }
   }
   
   .chat-history {
-    padding: 30px 30px 20px;
+    padding: 15px;
     border-bottom: 2px solid white;
     overflow-y: scroll;
-    height: 300px;
+    max-height: 400px;
+    height: 50vh;
     
     .message-data {
-      margin-bottom: 15px;
+      margin-bottom: 2px;
     }
-    
     .message-data-time {
       color: lighten($gray, 8%);
-      padding-left: 6px;
+      padding-left: 4px;
     }
-    
     .message {      
       color: white;
-      padding: 18px 20px;
+      padding: 6px 10px;
       line-height: 26px;
-      font-size: 16px;
+      font-size: 12px;
       border-radius: 7px;
       margin-bottom: 30px;
-      width: 90%;
+      width: 100%;
       position: relative;
       
       &:after {
         bottom: 100%;
-        left: 7%;
+        left: 2%;
         border: solid transparent;
         content: " ";
         height: 0;
@@ -175,7 +167,7 @@ body {
   }
   
   .chat-message {
-    padding: 30px;
+    padding: 7px;
     
     textarea {
       width: 100%;

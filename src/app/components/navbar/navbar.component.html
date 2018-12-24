@@ -10,9 +10,19 @@
                 </button>
             </div>
             <a class="navbar-brand" style="cursor: pointer;" >{{data.displaynow}}</a>
+              <div><div (click)="data.toggle_chat()" style="display: flex;flex-direction: column;color: #00f2c3; z-index: 1000000;position: relative; float: left;margin: 10%; justify-content: center;align-content: center;cursor: pointer; " align="center">
+  <div><i class="fa fa-comments" style="transform: scale(3);margin:10px"></i></div>
+  <!-- <div style="font-size: 12px;"><br>Chat</div> -->
+</div>
+</div>
         </div>
 
+    <div style="display: flex;flex-direction: row; flex-wrap: wrap;">
+       
+<div>
+  
         <div *ngIf="data.editorbool" style="background-color: transparent;display: flex; flex-direction: row;align-content: center;justify-content: space-around; flex-wrap:nowrap;float: right;right: 0 ">
+         
           <div>
             <div  ngbDropdown class="ps-this" style="position: relative;" >
               <button id="dropdownConfig2" class="btn btn-sm btn-outline-primary"  style="background-color: transparent; " ngbDropdownToggle>
@@ -42,6 +52,140 @@
             </div>
           </div>
           <div><button  class="btn btn-sm btn-outline-primary nav-item"  style="background-color: transparent;margin-bottom: 5px">RoomNo: xxxx</button></div>
+
         </div>
+
+</div>
+
+
+    </div>
     </div>
 </nav>
+
+
+
+
+  <div *ngIf="!data.chatbool" class=" clearfix" align="center" style="background-color: transparent;position: absolute;z-index: 100000000000;right: 0;float: right; margin-top: 65px;" >  
+    <div class="chat" [ngStyle]="{'max-width': data.chatwidth}" >
+      <div class="chat-header clearfix">
+        <div class="chat-about">
+          <div class="chat-with">
+     <p style="font-size: 16px">
+     <i *ngIf="data.exbool" class="now-ui-icons arrows-1_minimal-left" style="transform: scale(2); cursor: pointer;" (click)="data.expand()" ></i>
+     <i *ngIf="!data.exbool" class="now-ui-icons arrows-1_minimal-right" style="transform: scale(2); cursor: pointer;" (click)="data.expand()" ></i>
+ &nbsp; &nbsp; &nbsp; CodeLiver Chat <span style="color: #dbdbdb; transform: scale(0.7); font-size: 13px  ">500 messages</span></p></div>
+        </div>
+      </div> <!-- end chat-header -->
+      <div class="chat-history">
+          <div class="clearfix">
+            <div class="message-data align-right">
+              <span class="message-data-time" >10:10 AM, Today</span> &nbsp; &nbsp;
+              <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+            </div>
+            <div class="message other-message float-right">
+              Hi Vincent, how are you? How is the project coming along?
+            </div>
+          </div>
+
+          <div>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+              <span class="message-data-time">10:12 AM, Today</span>
+            </div>
+            <div class="message my-message">
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+              Are we meeting today? Project has been already finished and I have results to show you.
+            </div>
+          </div>
+          
+          <div class="clearfix">
+            <div class="message-data align-left">
+              <span class="message-data-name" >Olia</span>
+              <span class="message-data-time" >10:14 AM, Today</span> &nbsp; &nbsp;
+              
+            </div>
+            <div class="message other-message">https://www.youtube.com/watch?v=XOQABd12rlwhttps://www.youtube.com/watch?v=XOQABd12rlw
+            </div>
+          </div>
+          
+          <div>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+              <span class="message-data-time">10:20 AM, Today</span>
+            </div>
+            <div class="message my-message">https://www.youtube.com/watch?v=XOQABd12rlw
+            </div>
+          </div>
+          <div>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+              <span class="message-data-time">10:20 AM, Today</span>
+            </div>
+            <div class="message my-message">https://www.youtube.com/watch?v=XOQABd12rlw
+            </div>
+          </div>
+          <div>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+              <span class="message-data-time">10:20 AM, Today</span>
+            </div>
+            <div class="message my-message">https://www.youtube.com/watch?v=XOQABd12rlw
+            </div>
+          </div>
+          <div>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+              <span class="message-data-time">10:20 AM, Today</span>
+            </div>
+            <div class="message my-message">https://www.youtube.com/watch?v=XOQABd12rlw
+            </div>
+          </div>
+          
+          <ul>
+          <li>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+              <span class="message-data-time">10:31 AM, Today</span>
+            </div>
+            <i class="fa fa-circle online"></i>
+            <i class="fa fa-circle online" style="color: #AED2A6"></i>
+            <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+          </li>
+          
+        </ul>
+        
+      </div> <!-- end chat-history -->
+      <div class="chat-message clearfix">
+
+        <div class="row">
+        <div class="col-md-12">
+        <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="2"></textarea></div>
+
+        <div class="col-md-8">
+        <textarea name="name-to-send" id="name-to-send" placeholder ="Type your Name" rows="1"></textarea></div>
+
+        <div class="col-md-4">
+        <button class="btn btn-primary btn-block">Send</button></div>
+        </div>
+
+      </div> <!-- end chat-message -->
+      
+    </div> <!-- end chat -->
+    
+  </div> <!-- end container -->
+

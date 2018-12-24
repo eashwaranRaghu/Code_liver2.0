@@ -90,12 +90,11 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.codeEditor.focus();
       this.codeEditor.on('change', (e) => {
               // console.log(e);
-              if (this.applyingDeltas) {return; }
+              if (!this.applyingDeltas) {return; }
               this.pushEditor(e);
           }
       );
   }
-
     public pushEditor(e) {
         let currentRoute = roomNumber;
         if (!currentRoute) {
