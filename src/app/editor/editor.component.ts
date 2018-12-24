@@ -105,7 +105,7 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.db.list('rooms').update(currentRoute + '/editor', {code: this.codeEditor.getValue()}).then( s => {/*console.log('code', s) */});
         this.db.list('rooms/' + currentRoute + '/editor/queue').push({stamp: Date.now(), event: e, user: this.userid}).then( s => {/*console.log('queue', s) */});
     }
-    public applyDeltas(delta) {
+    public applyDeltas(delta){
         this.applyingDeltas = true;
         const x = this.codeEditor.getSession().getDocument().applyDeltas([delta]);
         this.applyingDeltas = false;
