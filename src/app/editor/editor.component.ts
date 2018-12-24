@@ -20,7 +20,7 @@ const modes = ['C_Cpp', 'Clojure', 'Cobol', 'CSharp', 'CSS', 'Dart', 'EJS', 'Eli
 const THEME = 'ace/theme/monokai';
 const MODE = 'ace/mode/javascript';
 let roomNumber = '';
-
+let global = '-LUVP3qKecKyTP_nlmh0';
 
 import {DataService} from '../data.service'
 /*const THEME = 'ace/theme/github';
@@ -43,6 +43,7 @@ export class EditorComponent implements OnInit, OnDestroy {
     public wrap: boolean;
     public applyingDeltas: boolean;
     public userid: string;
+    public stamp: number;
 
   constructor(public db: AngularFireDatabase, public data: DataService) {
     this.data.editorbool = true;
@@ -51,22 +52,23 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.wrap = false;
       this.applyingDeltas = false;
       this.userid = Math.random().toString().slice(2);
+      this.stamp = Date.now();
       let path = roomNumber;
       if (path) {
           path = 'rooms/' + path;
       } else {
-          path = 'rooms/-LUS89ZHUPyuOuycs0ql'
+          path = 'rooms/' + global;
       }
       this.subscriptionEditor = db.object((path) + '/editor/code').valueChanges().take(1).subscribe(editor => {
           this.editor = editor;
-          console.log(editor)
+          // console.log(editor);
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
       });
       this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges().subscribe(queue => {
           this.que = queue;
           const element = this.que[this.que.length - 1];
-          console.log(element);
-          if (element['user'] !== this.userid) {
+          // console.log(element);
+          if (element['stamp'] > this.stamp && element['user'] !== this.userid) {
               this.applyingDeltas = true;
               this.applyDeltas(element['event']);
               this.applyingDeltas = false;
@@ -92,7 +94,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.editorBeautify = ace.require('ace/ext/beautify');
 
       this.codeEditor.on('change', (e) => {
-              console.log(e);
+              // console.log(e);
               if (this.applyingDeltas) {return; }
               this.pushEditor(e);
           }
@@ -102,16 +104,16 @@ export class EditorComponent implements OnInit, OnDestroy {
     public pushEditor(e) {
         let currentRoute = roomNumber;
         if (!currentRoute) {
-            currentRoute = '-LUS89ZHUPyuOuycs0ql';
+            currentRoute = global;
         }
-        this.db.list('rooms').update(currentRoute + '/editor/code', this.codeEditor.getValue());
-        this.db.list('rooms/' + currentRoute + '/editor/queue').push({stamp: Date.now(), event: e, user: this.userid}).then( s => {console.log(s) });
+        this.db.list('rooms').update(currentRoute + '/editor', {code: this.codeEditor.getValue()}).then( s => {/*console.log('code', s) */});
+        this.db.list('rooms/' + currentRoute + '/editor/queue').push({stamp: Date.now(), event: e, user: this.userid}).then( s => {/*console.log('queue', s) */});
     }
     public applyDeltas(delta) {
         this.codeEditor.getSession().getDocument().applyDelta(delta);
     }
     public pushChat() {
-        const currentRoute = roomNumber || '-LUS89ZHUPyuOuycs0ql';
+        const currentRoute = roomNumber || global;
         this.db.list('rooms').update(currentRoute, {chat: this.chat});
     }
     public setTheme(theme: string) {
