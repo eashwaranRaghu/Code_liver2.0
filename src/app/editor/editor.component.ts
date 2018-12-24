@@ -22,6 +22,7 @@ const MODE = 'ace/mode/javascript';
 let roomNumber = '';
 
 
+import {DataService} from '../data.service'
 /*const THEME = 'ace/theme/github';
 const LANG = 'ace/mode/javascript';
 */
@@ -43,7 +44,8 @@ export class EditorComponent implements OnInit, OnDestroy {
     public applyingDeltas: boolean;
     public userid: string;
 
-  constructor(public db: AngularFireDatabase) {
+  constructor(public db: AngularFireDatabase, public data: DataService) {
+    this.data.editorbool = true;
       // this.db.object('.info').valueChanges().subscribe(s => {console.log('users', s); });
       roomNumber = localStorage.getItem('room');
       this.wrap = false;
@@ -57,6 +59,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
       this.subscriptionEditor = db.object((path) + '/editor/code').valueChanges().take(1).subscribe(editor => {
           this.editor = editor;
+          console.log(editor)
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
       });
       this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges().subscribe(queue => {
@@ -76,6 +79,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
       this.subscriptionEditor.unsubscribe();
       this.subscriptionChat.unsubscribe();
+       this.data.editorbool = false;
   }
   ngOnInit() {
       ace.require('ace/ext/language_tools');
@@ -114,7 +118,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.codeEditor.setTheme(theme);
       localStorage.setItem('theme', theme);
     }
-    public setLanguage(mode: string) {
+    public setLanguage(mode: string){
         this.codeEditor.getSession().setMode(mode);
         localStorage.setItem('mode', mode);
     }

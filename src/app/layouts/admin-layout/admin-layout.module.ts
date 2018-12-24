@@ -22,7 +22,7 @@ import { SpacerockerComponent } from '../../spacerocker/spacerocker.component';
 import { FileSharingComponent } from '../../file-sharing/file-sharing.component';
 import { AboutComponent } from '../../about/about.component';
 import { HelpComponent } from '../../help/help.component';
-
+import { SafePipe } from '../../safe.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -48,6 +48,7 @@ import { HelpComponent } from '../../help/help.component';
     FileSharingComponent,
     AboutComponent,
     HelpComponent,
+    SafePipe,
   ]
 })
 

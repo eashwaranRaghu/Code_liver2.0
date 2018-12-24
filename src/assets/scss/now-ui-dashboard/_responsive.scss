@@ -1,3 +1,9 @@
+@media screen and (max-width: 600px) and (min-width: 10px) {
+   .mobilenone {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 10px)
 { //tab 991 max
     .profile-photo .profile-photo-small{

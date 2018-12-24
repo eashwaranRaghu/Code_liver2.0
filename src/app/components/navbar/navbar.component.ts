@@ -4,7 +4,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 import { Router } from '@angular/router';
 import Chart from 'chart.js';
 import PerfectScrollbar from 'perfect-scrollbar';
-import {DataService} from '../../data.service'
+import {DataService} from '../../data.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit , AfterViewInit{
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
-      //ps = new PerfectScrollbar('.ps-this');
     private toggleButton: any;
     private sidebarVisible: boolean;
 
@@ -24,6 +23,7 @@ export class NavbarComponent implements OnInit , AfterViewInit{
       this.location = location;
           this.sidebarVisible = false;
          // this.sidebarOpen();
+
     }
     ngAfterViewInit(){
 

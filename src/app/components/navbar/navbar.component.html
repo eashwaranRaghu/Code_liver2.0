@@ -10,27 +10,38 @@
                 </button>
             </div>
             <a class="navbar-brand" style="cursor: pointer;" >{{data.displaynow}}</a>
-            
         </div>
-        <div style="background-color: transparent;display: flex; flex-direction: row;align-content: center;justify-content: space-around; flex-wrap: wrap;">
-        <div>
 
-          <div  ngbDropdown class="ps-this" style="position: relative;" >
-    <button id="dropdownConfig2" class="btn btn-sm btn-outline-primary"  style="background-color: black " ngbDropdownToggle>
-      Themes
-    </button>
-    <div class="ps-this ps-container scrollbar-y-right" style="position: absolute;" id="ps-this" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="background-color: black; cursor: pointer;color: white; height: 30vh;max-height: 200px;max-width: 50px; overflow-y: hidden;scrollbar-x: left; ">
-
-      <a class="dropdown-item" style="color: white">Dawn</a>
-      <a class="dropdown-item" style="color: white">Cobalt</a>
-      <a class="dropdown-item" style="color: white">Clouds</a>
-      <a class="dropdown-item" style="color: white">Chrome</a>
-      <a class="dropdown-item" style="color: white">Chrome</a>
-      <a class="dropdown-item" style="color: white">Chrome</a>
+        <div *ngIf="data.editorbool" style="background-color: transparent;display: flex; flex-direction: row;align-content: center;justify-content: space-around; flex-wrap:nowrap;float: right;right: 0 ">
+          <div>
+            <div  ngbDropdown class="ps-this" style="position: relative;" >
+              <button id="dropdownConfig2" class="btn btn-sm btn-outline-primary"  style="background-color: transparent; " ngbDropdownToggle>
+                Themes
+              </button>
+              <div class="ps-this dropdown-menu dropdown-menu-left scrollbar-y-right" style="position: absolute;" aria-labelledby="dropdownBasic1" id="selectedcomsize2" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="background-color: black; cursor: pointer;color: white; height: 30vh;max-height: 230px;max-width: 50px; overflow-y: hidden; ">
+                <a class="dropdown-item" style="color: white">Dawn</a>
+                <a class="dropdown-item" style="color: white">Cobalt</a>
+                <a class="dropdown-item" style="color: white">Clouds</a>
+                <a class="dropdown-item" style="color: white">Chrome</a>
+                <a class="dropdown-item" style="color: white">Monokai</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div  ngbDropdown class="ps-this" style="position: relative;" >
+              <button id="dropdownConfig2" class="btn btn-sm btn-outline-primary"  style="background-color: transparent; " ngbDropdownToggle>
+                Languages
+              </button>
+              <div class="dropdown-menu dropdown-menu-left ps-this scrollbar-y"  aria-labelledby="dropdownBasic1"style="position: absolute;" id="selectedcomsize2" ngbDropdownMenu aria-labelledby="dropdownBasic1" style="background-color: black; cursor: pointer;color: white; height: 30vh;max-height: 230px;max-width: 50px; overflow-y: hidden;">
+                <a class="dropdown-item" style="color: white">JavaScript</a>
+                <a class="dropdown-item" style="color: white">Java</a>
+                <a class="dropdown-item" style="color: white">C_Cpp</a>
+                <a class="dropdown-item" style="color: white">HTML</a>
+                <a class="dropdown-item" style="color: white">SQL</a>
+              </div>
+            </div>
+          </div>
+          <div><button  class="btn btn-sm btn-outline-primary nav-item"  style="background-color: transparent;margin-bottom: 5px">RoomNo: xxxx</button></div>
         </div>
-      </div></div>
-  <div><button  class="btn btn-sm btn-outline-primary"  style="background-color: black; margin: 5px">Languages</button></div>
-  <div><button  class="btn btn-sm btn-outline-primary nav-item"  style="background-color: black;margin: 5px">Wrap</button></div>
-</div>
     </div>
 </nav>
