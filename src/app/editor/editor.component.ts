@@ -67,7 +67,8 @@ export class EditorComponent implements OnInit, OnDestroy {
       // this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => {
       this.subscriptionEditor = db.list((path) + '/editor/queue').stateChanges(['child_added']).subscribe(queue => {
           const element = queue.payload.toJSON();
-          if (queue.payload && queue.payload.toJSON() && element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
+          console.log(element);
+          if (element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
               this.applyDeltas2(element['event']);
           }
       });
