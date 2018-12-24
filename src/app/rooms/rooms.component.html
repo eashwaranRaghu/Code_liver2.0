@@ -14,14 +14,14 @@
         <div class="card-body all-icons" style="color: #6e3670">
           <div class="row">
         <ng-container *ngFor="let room of rooms">
-            <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6" (click)="redir(room.roomid)" >
+            <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6" (click)="redir(room.roomid,room.value.roomNumber)" >
               <div class="font-icon-detail">
                 <img src="assets/img/codeliver.png" width="100%" height="100%" alt="">
                 <p style="color: #6e3670; z-index: 100" >{{room.value.roomNumber}}</p>
               </div>
             </div>
           </ng-container>
-            
+
           </div>
         </div>
       </div>

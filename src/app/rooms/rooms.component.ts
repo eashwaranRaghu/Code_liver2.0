@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import 'rxjs/add/operator/take';
 import { Router } from '@angular/router';
+
+import {DataService} from '../data.service'
 let roomIDs = [];
 @Component({
   selector: 'app-rooms',
@@ -10,7 +12,9 @@ let roomIDs = [];
 })
 export class RoomsComponent implements OnInit {
 rooms = [];
-  constructor(public db: AngularFireDatabase, public router: Router) {
+  constructor(public db: AngularFireDatabase, public router: Router, public data: DataService) {
+
+   this.data.roomid = localStorage.getItem('roomid')
       db.object('rooms').valueChanges().take(1).subscribe( s => {
               roomIDs = Object.keys(s);
               roomIDs.forEach(id => {
@@ -22,9 +26,10 @@ rooms = [];
           }
       );
   }
-  redir(id){
+  redir(id,numb){
     console.log(id);
-    localStorage.setItem('room',id);
+    localStorage.setItem('room',id);localStorage.setItem('roomid',numb);
+    this.data.roomid = localStorage.getItem('roomid')
     this.router.navigate(['../editor'])
 
   }

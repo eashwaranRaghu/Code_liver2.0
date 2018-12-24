@@ -12,18 +12,18 @@ import {DataService} from '../../data.service';
 })
 export class NavbarComponent implements OnInit , AfterViewInit{
     private listTitles: any[];
+  themes = ['monokai', 'ambiance', 'chaos', 'clouds_midnight', 'cobalt', 'gruvbox', 'idle_fingers', 'kr_theme', 'merbivore', 'terminal','twilight', 'chrome', 'clouds', 'crimson_editor', 'dawn', 'dreamweaver', 'eclipse', 'github', 'iplastic', 'solarized_light', 'textmate', 'tomorrow', 'xcode', 'kuroir', 'katzenmilch', 'sqlserver'];
+  modes = ['c_cpp', 'clojure', 'cobol', 'csharp', 'css', 'dart', 'ejs', 'elixir', 'golang', 'html', 'java', 'javascript', 'json', 'latex', 'php', 'python', 'r', 'ruby', 'rust', 'scss', 'scala', 'sass', 'sh', 'snippets', 'sql', 'tex', 'text'];
+   sizes = ['30px','26px','22px','18px','15px','12px','9px',]
     location: Location;
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-
     public isCollapsed = true;
-
     constructor(public data: DataService, location: Location,  private element: ElementRef, private router: Router) {
       this.location = location;
           this.sidebarVisible = false;
          // this.sidebarOpen();
-
     }
     ngAfterViewInit(){
 
