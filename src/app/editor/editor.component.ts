@@ -64,9 +64,11 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
           this.applyingDeltas = false;
       });
-      this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => {
-          this.que = queue;
-          const element = this.que[this.que.length - 1];
+      // this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => {
+      this.subscriptionEditor = db.list((path) + '/editor/queue').stateChanges(['child_added']).subscribe(queue => {
+          // this.que = queue;
+          const element = queue;
+          console.log(element);
           if (element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
               this.applyDeltas2(element['event']);
           }
