@@ -66,10 +66,8 @@ export class EditorComponent implements OnInit, OnDestroy {
       });
       // this.subscriptionEditor = db.list((path) + '/editor/queue').valueChanges(['child_added']).subscribe(queue => {
       this.subscriptionEditor = db.list((path) + '/editor/queue').stateChanges(['child_added']).subscribe(queue => {
-          // this.que = queue;
-          const element = queue;
-          console.log(element);
-          if (element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
+          const element = queue.payload.toJSON();
+          if (queue.payload && queue.payload.toJSON() && element && element['stamp'] > this.stamp && element['user'] !== this.userid) {
               this.applyDeltas2(element['event']);
           }
       });
