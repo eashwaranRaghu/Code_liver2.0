@@ -35,8 +35,8 @@ export class EditorComponent implements OnInit, OnDestroy {
     @ViewChild('codeEditor') codeEditorElmRef: ElementRef;
     private codeEditor: ace.Ace.Editor;
     private editorBeautify;
-    public subscriptionEditor: Subscription;
-    public subscriptionChat: Subscription;
+    public subscriptionCode: Subscription;
+    public subscriptionQueue: Subscription;
     public editor: {};
     public que: {}[];
     public chat: {};
@@ -58,13 +58,13 @@ export class EditorComponent implements OnInit, OnDestroy {
       } else {
           path = 'rooms/' + global;
       }
-      this.subscriptionEditor = db.object((path) + '/editor/code').valueChanges().take(1).subscribe(editor => {
+      this.subscriptionCode = db.object((path) + '/editor/code').valueChanges().take(1).subscribe(editor => {
           this.editor = editor;
           this.applyingDeltas = true;
           this.codeEditor.getSession().getDocument().setValue(editor.toString());
           this.applyingDeltas = false;
       });
-      this.subscriptionEditor = db.list((path) + '/editor/queue').stateChanges(['child_added']).subscribe(queue => {
+      this.subscriptionQueue = db.list((path) + '/editor/queue').stateChanges(['child_added']).subscribe(queue => {
           const element = queue.payload.toJSON();
           const keys = Object.keys(element['event']['lines']);
           let lines = [];
@@ -78,8 +78,8 @@ export class EditorComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy() {
-      this.subscriptionEditor.unsubscribe();
-      this.subscriptionChat.unsubscribe();
+      this.subscriptionQueue.unsubscribe();
+      // this.subscriptionCode.unsubscribe();
        this.data.editorbool = false;
   }
   ngOnInit() {
@@ -94,11 +94,12 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.codeEditor.focus();
       this.codeEditor.on('change', (e) => {
               // console.log(e);
-              if (!this.applyingDeltas) {return; }
+              if (this.applyingDeltas) {return; }
               this.pushEditor(e);
           }
       );
   }
+
     public pushEditor(e) {
         let currentRoute = roomNumber;
         if (!currentRoute) {
@@ -107,7 +108,6 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.db.list('rooms').update(currentRoute + '/editor', {code: this.codeEditor.getValue()}).then( s => {/*console.log('code', s) */});
         this.db.list('rooms/' + currentRoute + '/editor/queue').push({stamp: Date.now(), event: e, user: this.userid}).then( s => {/*console.log('queue', s) */});
     }
-
     public applyDeltas2(delta) {
         this.applyingDeltas = true;
         this.codeEditor.getSession().getDocument().applyDelta(delta);
