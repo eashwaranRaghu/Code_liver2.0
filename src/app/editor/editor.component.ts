@@ -2,7 +2,6 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 declare var require: any;
 import * as ace from 'ace-builds';
 import 'rxjs/operators/take';
-
 import 'brace/index';
 import 'brace/theme/monokai';
 import 'brace/theme/chrome';import 'brace/theme/clouds';import 'brace/theme/crimson_editor';
@@ -34,7 +33,7 @@ import {Subscription} from 'rxjs/Rx';
 const themes = ['monokai', 'ambiance', 'chaos', 'clouds_midnight', 'cobalt', 'gruvbox', 'idle_fingers', 'kr_theme', 'merbivore', 'terminal','twilight', 'chrome', 'clouds', 'crimson_editor', 'dawn', 'dreamweaver', 'eclipse', 'github', 'iplastic', 'solarized_light', 'textmate', 'tomorrow', 'xcode', 'kuroir', 'katzenmilch', 'sqlserver'];
 const modes = ['c_cpp', 'clojure', 'cobol', 'csharp', 'css', 'dart', 'ejs', 'elixir', 'golang', 'html', 'java', 'javascript', 'json', 'latex', 'php', 'python', 'r', 'ruby', 'rust', 'scss', 'scala', 'sass', 'sh', 'snippets', 'sql', 'tex', 'text'];
 const THEME = 'ace/theme/chaos';
-const MODE = 'ace/mode/javascript';
+const MODE = 'ace/mode/html';
 let roomNumber = '';
 const global = '-LUVP3qKecKyTP_nlmh0';
 

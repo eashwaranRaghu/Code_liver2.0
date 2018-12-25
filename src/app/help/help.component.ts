@@ -9,8 +9,8 @@ export class HelpComponent implements OnInit {
 chatwidth = '350px';exbool = true;chatbool = false;
   constructor() { }
  
-	  ngOnInit() {
-	  }
+  ngOnInit() {
+  }
 	toggle_chat(){
 		this.chatbool = !this.chatbool;
 	}

@@ -5,13 +5,33 @@ import { Router } from '@angular/router';
 import Chart from 'chart.js';
 import PerfectScrollbar from 'perfect-scrollbar';
 import {DataService} from '../../data.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit , AfterViewInit{
-    private listTitles: any[];
+
+    private listTitles: any[];chat:HTMLElement;
+  chatbool = false;
+  toggle_chat(){
+    this.chatbool = !this.chatbool;
+    if(this.chatbool == false ){
+     
+     setTimeout(()=>{
+
+    this.chat = document.getElementById("chat");
+         this.chat.scrollTo({
+      top: this.chat.scrollHeight,
+      left: 0,
+      behavior: 'smooth'
+      });
+     this.stb();
+     },100)
+}
+  }
+
   themes = ['monokai', 'ambiance', 'chaos', 'clouds_midnight', 'cobalt', 'gruvbox', 'idle_fingers', 'kr_theme', 'merbivore', 'terminal','twilight', 'chrome', 'clouds', 'crimson_editor', 'dawn', 'dreamweaver', 'eclipse', 'github', 'iplastic', 'solarized_light', 'textmate', 'tomorrow', 'xcode', 'kuroir', 'katzenmilch', 'sqlserver'];
   modes = ['c_cpp', 'clojure', 'cobol', 'csharp', 'css', 'dart', 'ejs', 'elixir', 'golang', 'html', 'java', 'javascript', 'json', 'latex', 'php', 'python', 'r', 'ruby', 'rust', 'scss', 'scala', 'sass', 'sh', 'snippets', 'sql', 'tex', 'text'];
    sizes = ['30px','26px','22px','18px','15px','12px','9px',]
@@ -22,14 +42,39 @@ export class NavbarComponent implements OnInit , AfterViewInit{
     public isCollapsed = true;
     constructor(public data: DataService, location: Location,  private element: ElementRef, private router: Router) {
       this.location = location;
-          this.sidebarVisible = false;
+      this.sidebarVisible = false;
+      data.db.list('chat').valueChanges().subscribe(e => {
+
+      setTimeout(()=>{
+      this.chat = document.getElementById("chat");
+        this.chat.scrollTo({
+          top: this.chat.scrollHeight,
+          left: 0,
+          behavior: 'smooth'
+      });
+     },100)
+
+    });
          // this.sidebarOpen();
     }
     ngAfterViewInit(){
-
        this.sidebarToggle();
+       this.chat = document.getElementById("chat");
+    }
+    stb(){
+       this.chat.scrollTo({
+      top: this.chat.scrollHeight,
+      left: 0,
+      behavior: 'smooth'
+      });
+       console.log("scrolled")
     }
     ngOnInit(){
+     setTimeout(()=>{
+     this.stb();
+     },4000)
+
+
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
