@@ -58,7 +58,7 @@
 </nav>
 
 
-<div *ngIf="!chatbool"  class=" clearfix" align="center" style="background-color: transparent;position: absolute;z-index: 100000000000;right: 0;float: right; margin-top: 90px;" >  
+<div *ngIf="!chatbool"   class=" clearfix" align="center" style="opacity:1; background-color: transparent;position: fixed;z-index: 100000000000;right: 0;float: right; margin-top: 90px;" >  
   <div class="chat" [ngStyle]="{'max-width': data.chatwidth}">
     <div class="chat-header clearfix">
       <div class="chat-about">
@@ -94,12 +94,9 @@
           </div>
             <div style="display: flex;flex-direction: row;flex-wrap: nowrap;">
               <div style="width: 70%">
-              <textarea style="font-family: 'Raleway', sans-serif;" name="name" #name id="name" placeholder ="Type your Name" rows="1"></textarea></div>
+              <textarea style="font-family: 'Raleway', sans-serif;background-color: transparent;" name="name" #name id="name" placeholder ="Type your Name" rows="1"></textarea></div>
               <div style="width: 30%"><button class="btn btn-primary btn-block" (click)="data.sendchat(name.value, mssg.value)">Send</button></div>
             </div>
-          
-            
-              
             </div>
           </div> 
         </div>

@@ -302,6 +302,9 @@ $social-tumblr-state-color:        lighten(#35465c, 6%) !default;
 $social-behance: 			       #1769ff !default;
 $social-behance-state-color:       lighten(#1769ff, 6%) !default;
 
+::-webkit-scrollbar {
+  width: 1px;
+}
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 
