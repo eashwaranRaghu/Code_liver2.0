@@ -26,12 +26,16 @@ export class FileSharingComponent implements OnInit {
         this.filesarr.subscribe(a => console.log(a));
          /*this.dropArea.addEventListener('dragover', handlerFunction, false)
           this.dropArea.addEventListener('drop', handlerFunction, false) */
-      }eurl;
+      }eurl;uploading='';
     uploadFile(event) {
         const file = event.target.files[0];
- this.done='';
-         console.log(event);
+      
+        console.log(event);
         const size = parseInt(file.size)/1000000; //store
+        if(size>15){this.done='15MB maximum!!!'}
+           else {
+        this.uploading = 'upload started'
+        this.done='';
         console.log(file.name);                //store
         const filePath = `test/${new Date().getTime()}_${file.name}`;
         console.log(filePath);
@@ -44,18 +48,22 @@ export class FileSharingComponent implements OnInit {
             finalize(() => {this.downloadURL = fileRef.getDownloadURL();
                 this.downloadURL.subscribe(e => {this.eurl = e;console.log(e)
                     this.files.push({ name: file.name, size: size, url: e });});
-                console.log(this.downloadURL);this.done='done';    //store
+                console.log(this.downloadURL);this.done='done';
+                    this.uploading = ''    //store
               
             })
-        )
-            .subscribe()
+        ).subscribe()}
 
     }
      uploadFile3(event){
-         this.done='';
-         console.log(event);
         const file = event.item(0); //just change to this
+
+        console.log(event);
         const size = parseInt(file.size)/1000000; //store
+        if(size>15){this.done='15MB maximum!!!'}
+           else {
+        this.uploading = 'upload started'
+        this.done='';
         console.log(file.name);                //store
         const filePath = `test/${new Date().getTime()}_${file.name}`;
         console.log(filePath);
@@ -68,11 +76,11 @@ export class FileSharingComponent implements OnInit {
             finalize(() => {this.downloadURL = fileRef.getDownloadURL();
                 this.downloadURL.subscribe(e => {this.eurl = e;console.log(e)
                     this.files.push({ name: file.name, size: size, url: e });});
-                console.log(this.downloadURL);this.done='done';    //store
+                console.log(this.downloadURL);this.done='done';
+                    this.uploading = ''    //store
               
             })
-        )
-            .subscribe()
+        ).subscribe()}
     }
     ngOnInit() {
          this.dropArea = document.getElementById('drop-area');

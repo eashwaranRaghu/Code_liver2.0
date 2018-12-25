@@ -13,7 +13,7 @@
 <div class="card" style="background-color: #27293d;">
 <div class="card-header" >
 	<div class="col-md-12">
-		<p><span style="font-size: 22px;color: #e2438d">DropZone For Sharing Files: <br><p style="font-size: 12px" >&nbsp;&nbsp;We have a  generous upload Size limit of <b>10MB</b></p> </span><br></p>
+		<p><span style="font-size: 22px;color: #e2438d">DropZone For Sharing Files: <br><p style="font-size: 12px" >&nbsp;&nbsp;We have a  generous upload Size limit of <b>15MB</b></p> </span><br></p>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
@@ -30,7 +30,7 @@
 					<p style="font-size: 18px">Or,</p>
 
 						<input class="btn btn-primary" style="max-width: 100%;background-color: #9d3f91" type="file" id="fileElem"   (change)="uploadFile($event)" >
-						<p style="font-size: 16px">{{done}}</p>
+						<p style="font-size: 16px">{{done}} {{uploading}}</p>
 						<!-- <p *ngIf="uploadPercent | async ">{{ uploadPercent | async }}% Complete</p> -->
 					</div>
 				</div>
@@ -44,9 +44,6 @@
 					<table class="table">
 						<thead class="text-primary">
 							<th>
-								Serial No.
-							</th>
-							<th>
 								Name
 							</th>
 							<th>
@@ -59,10 +56,7 @@
 						<tbody>
 							<tr *ngFor="let feat of this.filesarr | async; index as i2">
 								<ng-container >
-									<ng-container >
-								<td style="margin-left: 0.2vw">
-									{{i2 + 1}}
-								</td>
+									<ng-container>
 								<td>
 									{{feat.name}}
 								</td>
