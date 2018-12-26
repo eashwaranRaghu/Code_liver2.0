@@ -14,21 +14,48 @@ export class SpacerockerComponent implements OnInit {
  
   ngOnInit() {
   }
-   switch(){
-    this.swi = this.swi + 1;
-    this.swi = this.swi%3;
-    if(this.swi == 0){
-      this.text='https://quickchess.net/';
-      this.text2 = 'Want Mario?';
+   switch(val){
+    if(val == '0'){
+      this.text='//www.retrogames.cc/embed/16843-super-mario-bros-japan-usa.html';
     }
-    else if(this.swi == 1){
-      this.text = 'https://supermarioemulator.com/mario.php';
-      this.text2 = 'Want Tekken 3?';
+    else if(val == '1'){
+      this.text='//www.retrogames.cc/embed/16841-contra-usa.html';
     }
-    else if(this.swi == 2){
-      this.text = '//www.retrogames.cc/embed/40238-tekken-3.html';
-      this.text2 = 'back to Chess?';
+    else if(val == '2'){
+      this.text='//www.retrogames.cc/embed/25567-battlecity-japan.html';
     }
-    console.log(this.swi,this.text,this.text2)
+    else if(val == '3'){
+      this.text='//www.retrogames.cc/embed/20411-bomberman-usa.html';
+    }
+    else if(val == '4'){
+      this.text='//www.retrogames.cc/embed/22234-double-dragon-ii-the-revenge-usa.html';
+    }
+    else if(val == '5'){
+      this.text='//www.retrogames.cc/embed/21936-spider-man-return-of-the-sinister-six-europe.html';
+    }
+    else if(val == '6'){
+      this.text='//www.retrogames.cc/embed/27014-road-rash-usa.html';
+    }
+    else if(val == '7'){
+      this.text='//www.retrogames.cc/embed/20844-lode-runner-usa.html';
+    }
   }
 }
+
+/*
+<iframe src="//www.retrogames.cc/embed/20844-lode-runner-usa.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+<iframe src="//www.retrogames.cc/embed/16843-super-mario-bros-japan-usa.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+<iframe src="//www.retrogames.cc/embed/16841-contra-usa.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+<iframe src="//www.retrogames.cc/embed/25567-battlecity-japan.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+<iframe src="//www.retrogames.cc/embed/20411-bomberman-usa.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+<iframe src="//www.retrogames.cc/embed/21201-double-dragon-europe.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+<iframe src="//www.retrogames.cc/embed/21936-spider-man-return-of-the-sinister-six-europe.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+<iframe src="//www.retrogames.cc/embed/27014-road-rash-usa.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
+
+https://www.retrogames.cc/nes-games/spider-man-return-of-the-sinister-six-europe.html
+https://www.retrogames.cc/nes-games/super-mario-bros-japan-usa.html
+https://www.retrogames.cc/nes-games/battle-city-japan.html
+https://www.retrogames.cc/nes-games/double-dragon-europe.html
+https://www.retrogames.cc/nes-games/bomberman-usa.html
+https://www.retrogames.cc/nes-games/contra-usa.html
+https://www.retrogames.cc/gameboycolor-games/road-rash-usa.html*/
