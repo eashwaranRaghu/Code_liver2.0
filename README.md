@@ -1,5 +1,5 @@
 # Codeliver 2.0
-### CODELIVER is a web application that provides various tools and an infrastructure aimed to support coders in collaborating in real-time.
+### CODELIVER is a web application that provides various tools and an infrastructure aimed to support coders in real-time collaboration.
 Feature list:
 1. Code Sharing with 100 Rooms.
 2. A common global text chat with chat-bots.
