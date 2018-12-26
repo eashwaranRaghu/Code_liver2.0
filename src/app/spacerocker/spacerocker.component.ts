@@ -9,13 +9,13 @@ export class SpacerockerComponent implements OnInit {
 	text = 'https://quickchess.net/';
   swi:number = 0;
 	text2 = 'Want Mario?';
-
+  rooms=[1,2,3,4,5,6];
   constructor() { }
  
   ngOnInit() {
   }
    switch(){
-     this.swi = this.swi + 1;
+    this.swi = this.swi + 1;
     this.swi = this.swi%3;
     if(this.swi == 0){
       this.text='https://quickchess.net/';
@@ -23,7 +23,7 @@ export class SpacerockerComponent implements OnInit {
     }
     else if(this.swi == 1){
       this.text = 'https://supermarioemulator.com/mario.php';
-      this.text2 = 'Want Tekken';
+      this.text2 = 'Want Tekken 3?';
     }
     else if(this.swi == 2){
       this.text = '//www.retrogames.cc/embed/40238-tekken-3.html';

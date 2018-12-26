@@ -1,6 +1,17 @@
-<div id="top" style="background-color: black;padding-top: 150px; position: relative;z-index: 1000">
-	<h3 style="margin-top: 1vh;margin-left: 0.5vw; color: white; cursor: pointer;" align="center" (click)=switch()>{{text2}}</h3>
+<div id="top" style="background-color: black;padding-top: 130px; position: relative;z-index: 1000">
+	<div style="display: flex;flex-direction: row;padding-bottom:20px;  flex-wrap: wrap;justify-content: space-around;color: white">
+		<div><button class="btn btn-primery" style="background-color: #9d3f91;border-width: 1px;border-color: #9d3f91;border-radius: 3px; color: white">SuperMario</button></div>
+		<div><button class="btn btn-primery" style="background-color: #9d3f91;border-width: 1px;border-color: #9d3f91;border-radius: 3px; color: white">Contra</button></div>
+		<div><button class="btn btn-primery" style="background-color: #9d3f91;border-width: 1px;border-color: #9d3f91;border-radius: 3px; color: white">BattleCity</button></div>
+		<div><button class="btn btn-primery" style="background-color: #9d3f91;border-width: 1px;border-color: #9d3f91;border-radius: 3px; color: white">BomberMan</button></div>
+		<div><button class="btn btn-primery" style="background-color: #9d3f91;border-width: 1px;border-color: #9d3f91;border-radius: 3px; color: white">DoubleDragon</button></div>
+		<div><button class="btn btn-primery" style="background-color: #9d3f91;border-width: 1px;border-color: #9d3f91;border-radius: 3px; color: white">Spiderman</button></div>
+		<div><button class="btn btn-primery" style="background-color: #9d3f91;border-width: 1px;border-color: #9d3f91;border-radius: 3px; color: white">RoadRash</button></div>
+
+	</div>
+
+	<!-- <h3 style="margin-top: 1vh;margin-left: 0.5vw; color: white; cursor: pointer;" align="center" (click)=switch()>{{text2}}</h3> -->
 </div>
-<div style="width: 100%;height: 80vh; margin-top: -80px;position: relative;z-index: 10">
+<div style="width: 100%;height: 80vh; margin-top: -30px;position: relative;z-index: 10">
 	 <iframe [src]="text | safe" width="100%" height="100%" style="width: 100%; height: 100%;" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>
 </div>
