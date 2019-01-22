@@ -412,11 +412,9 @@ $gray: #d13484;
     }
     
   }
-  
-  .chat-message {
+.chat-message {
     padding: 7px;
-    
-    textarea {
+    input {
       width: 100%;
       border: none;
       padding: 10px 20px;

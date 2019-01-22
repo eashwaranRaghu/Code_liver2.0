@@ -10,11 +10,11 @@
         </div>
         <div class="card-body all-icons">
           <div class="row">
-            <ng-container *ngFor="let room of rooms">
-              <div style="cursor:pointer;" class="hovr font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6" (click)="redir(room.roomid,room.value.roomNumber)" >
+            <ng-container *ngFor="let room of room2">
+              <div style="cursor:pointer;" class="hovr font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6" (click)="redir(room.roomid,room.roomNumber)" >
                 <div class="font-icon-detail">
                   <h3 style="color: white;">Room</h3>
-                  <p style="color: white; z-index: 100;transform: scale(1.5);" >{{room.value.roomNumber}}</p>
+                  <p style="color: white; z-index: 100;transform: scale(1.5);" >{{room.roomNumber}}</p>
                 </div>
               </div>
             </ng-container>

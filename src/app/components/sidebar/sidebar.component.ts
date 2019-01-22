@@ -13,15 +13,6 @@ export const ROUTES: RouteInfo[] = [
     { path: '/filesharing', title: 'DropZone',  icon:'files_single-copy-04', class: '' },
     { path: '/spacerocker', title: 'Nintendo',  icon:'media-1_button-play', class: '' },
     { path: '/about', title: 'About',  icon:'travel_info', class: '' },
-   /* { path: '/help', title: 'Help',  icon:'education_agenda-bookmark', class: '' },
-
-    { path: '/dashboard', title: 'Editor1',  icon: 'design_app', class: '' },
-    { path: '/icons', title: 'Rooms1',  icon:'business_bank', class: '' },
-    { path: '/maps', title: 'Video Chat1',  icon:'tech_tv', class: '' },
-    { path: '/notifications', title: 'SpaceRocker1',  icon:'media-1_button-play', class: '' },
-    { path: '/user-profile', title: 'File Sharing1',  icon:'files_single-copy-04', class: '' },
-    { path: '/table-list', title: 'About1',  icon:'travel_info', class: '' },
-    { path: '/typography', title: 'Help1',  icon:'text_caps-small', class: '' }*/
 ];
 
 @Component({
