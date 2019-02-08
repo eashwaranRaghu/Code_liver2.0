@@ -12,7 +12,6 @@ describe('SpacerockerComponent', () => {
     })
     .compileComponents();
   }));
-
   beforeEach(() => {
     fixture = TestBed.createComponent(SpacerockerComponent);
     component = fixture.componentInstance;

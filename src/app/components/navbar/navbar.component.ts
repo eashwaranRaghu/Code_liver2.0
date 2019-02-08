@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef , AfterViewInit} from '@angular/core';
+import { Component, OnInit, ElementRef , AfterViewInit, ViewChild} from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
@@ -12,9 +12,10 @@ import {DataService} from '../../data.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit , AfterViewInit{
-
+  @ViewChild("mssg") nameField: ElementRef;
     private listTitles: any[];chat:HTMLElement;
   chatbool = false;
+
   toggle_chat(){
     this.chatbool = !this.chatbool;
     if(this.chatbool == false ){
@@ -53,7 +54,6 @@ export class NavbarComponent implements OnInit , AfterViewInit{
           behavior: 'smooth'
       });
      },100)
-
     });
          // this.sidebarOpen();
     }
@@ -69,6 +69,7 @@ export class NavbarComponent implements OnInit , AfterViewInit{
       });
        console.log("scrolled")
     }
+     
     ngOnInit(){
      setTimeout(()=>{
      this.stb();
@@ -188,7 +189,13 @@ export class NavbarComponent implements OnInit , AfterViewInit{
 
         }
     };
-
+    sendchat(name, mssg){
+      this.nameField.nativeElement.value='';
+      this.nameField.nativeElement.focus();
+      this.data.sendchat(name,mssg);
+   //   msghtml.focus();
+    
+     }
     getTitle(){
       var titlee = this.location.prepareExternalUrl(this.location.path());
       if(titlee.charAt(0) === '#'){

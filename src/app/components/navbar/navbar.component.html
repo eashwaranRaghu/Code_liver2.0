@@ -89,13 +89,13 @@
       <div class="chat-message clearfix">
         <div class="row">
             <div class="col-md-12">
-            <textarea name="mssg" style="background-color: transparent;border-color: #9d3f91;color: white;border: 1px;font-family: 'Raleway', sans-serif;" #mssg id="mssg" placeholder ="Type your message" rows="2"></textarea>
+            <input name="mssg" style="background-color: transparent;border-color: #9d3f91;color: white;border: 1px;font-family: 'Raleway', sans-serif;" #mssg id="mssg" placeholder ="Type your message" rows="2">
             </div>
           </div>
             <div style="display: flex;flex-direction: row;flex-wrap: nowrap;">
               <div style="width: 70%">
-              <textarea style="font-family: 'Raleway', sans-serif;background-color: transparent;color: white" name="name" #name id="name" placeholder ="Type your Name" rows="1"></textarea></div>
-              <div style="width: 30%"><button class="btn btn-primary btn-block" (click)="data.sendchat(name.value, mssg.value)">Send</button></div>
+              <input style="font-family: 'Raleway', sans-serif;background-color: transparent;color: white" name="name" #name id="name" placeholder ="Type your Name" rows="1"></div>
+              <div style="width: 30%"><button class="btn btn-primary btn-block" (click)="sendchat(name.value, mssg.value)">Send</button></div>
             </div>
             </div>
           </div> 

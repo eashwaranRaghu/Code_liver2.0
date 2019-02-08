@@ -8,5 +8,7 @@ import {DataService} from './data.service'
 export class AppComponent {
     constructor(public data: DataService) {
     	this.data.initthis();
+    localStorage.removeItem('firebase:previous_websocket_failure');
+
     }
 }
