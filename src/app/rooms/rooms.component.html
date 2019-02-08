@@ -12,9 +12,10 @@
           <div class="row">
             <ng-container *ngFor="let room of room2">
               <div style="cursor:pointer;" class="hovr font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6" (click)="redir(room.roomid,room.roomNumber)" >
-                <div class="font-icon-detail">
+                <div class="font-icon-detail" [ngStyle]="{'background-color': live.population[room.roomNumber] ? 'black' : 'transparent'}">
                   <h3 style="color: white;">Room</h3>
                   <p style="color: white; z-index: 100;transform: scale(1.5);" >{{room.roomNumber}}</p>
+                  <p style="color: white; z-index: 100;transform: scale(1);" >{{live.population[room.roomNumber] || '0'}} Online</p>
                 </div>
               </div>
             </ng-container>

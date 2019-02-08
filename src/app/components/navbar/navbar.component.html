@@ -51,6 +51,7 @@
         </div>
       </div>
       <div><button  class="btn btn-sm btn-outline-primary nav-item"  style="background-color: transparent;margin-bottom: 5px"><b>RoomNo:  <i>{{data.roomid}}</i></b></button></div>
+      <div><button  class="btn btn-sm btn-outline-primary nav-item"  style="background-color: transparent;margin-bottom: 5px"><b>Room Population  <i>{{live.population[data.roomid]}}</i></b></button></div>
     </div>
   </div>
   </div>
@@ -69,7 +70,8 @@
           <div class="col-sm-4"><p style="font-size: 24px">Chat</p></div>
           <div class="col-sm-4"><i   class="now-ui-icons ui-1_simple-remove"  style="transform: scale(2); cursor: pointer;"  (click)="toggle_chat()" ></i></div>
           <div class="col-sm-12">
-            <span style="color: #dbdbdb; transform: scale(0.7); font-size: 13px  ">{{data.chatlen}} messages</span>
+              <span style="color: #dbdbdb; transform: scale(0.7); font-size: 13px  ">{{live.population['count']}} Users Online | </span>
+              <span style="color: #dbdbdb; transform: scale(0.7); font-size: 13px  ">{{data.chatlen}} messages</span>
           </div>
         </div>
           </div>

@@ -19,6 +19,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { DropZoneDirective } from './drop-zone.directive';
 import { FileSizePipe } from './file-size.pipe';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import {LiveService} from './live.service';
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -30,13 +33,14 @@ import { FileSizePipe } from './file-size.pipe';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+      SocketIoModule.forRoot(config)
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent
   ],
-  providers: [DataService],
+  providers: [DataService, LiveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

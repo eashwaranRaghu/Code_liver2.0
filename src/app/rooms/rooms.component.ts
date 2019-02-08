@@ -4,6 +4,7 @@ import 'rxjs/add/operator/take';
 import { Router } from '@angular/router';
 
 import {DataService} from '../data.service'
+import {LiveService} from '../live.service';
 let roomIDs = [];
 @Component({
   selector: 'app-rooms',
@@ -11,7 +12,8 @@ let roomIDs = [];
   styleUrls: ['./rooms.component.scss']
 })
 export class RoomsComponent implements OnInit {
-rooms = [];room2 = [
+rooms = [];
+room2 = [
   {
     "roomid": "-LUVP3qKecKyTP_nlmh0",
     "roomNumber": 1
@@ -413,8 +415,7 @@ rooms = [];room2 = [
     "roomNumber": 100
   }
 ];
-  constructor(public db: AngularFireDatabase, public router: Router, public data: DataService) {
-
+  constructor(public db: AngularFireDatabase, public router: Router, public data: DataService, public live: LiveService) {
    /*this.data.roomid = localStorage.getItem('roomid')
       db.object('rooms').valueChanges().take(1).subscribe( s => {
               roomIDs = Object.keys(s);
@@ -431,12 +432,14 @@ rooms = [];room2 = [
           }
       );*/
   }
-  redir(id,numb){
+  redir(id, numb) {
     console.log(id);
-    localStorage.setItem('room',id);localStorage.setItem('roomid',numb);
-    this.data.roomid = localStorage.getItem('roomid')
+    this.live.leave(localStorage.getItem('roomid'));
+    localStorage.setItem('room', id);
+    localStorage.setItem('roomid', numb);
+    this.live.join(numb || '-LUVP3qKecKyTP_nlmh0');
+    this.data.roomid = localStorage.getItem('roomid');
     this.router.navigate(['../editor'])
-
   }
 
   ngOnInit() {

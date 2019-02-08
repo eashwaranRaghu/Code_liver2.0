@@ -77,7 +77,7 @@ chatbool = false;
     db.list('chat').valueChanges().subscribe(e => {
       this.chatlen = e.length;
     });
-    console.log(this.chats)
+    // console.log(this.chats)
     /*this.chats.subsrcibe(e => {
     console.log(e)
     })*/

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import Chart from 'chart.js';
 import PerfectScrollbar from 'perfect-scrollbar';
 import {DataService} from '../../data.service';
+import {LiveService} from '../../live.service';
 
 @Component({
   selector: 'app-navbar',
@@ -41,7 +42,7 @@ export class NavbarComponent implements OnInit , AfterViewInit{
     private toggleButton: any;
     private sidebarVisible: boolean;
     public isCollapsed = true;
-    constructor(public data: DataService, location: Location,  private element: ElementRef, private router: Router) {
+    constructor(public data: DataService, location: Location,  private element: ElementRef, private router: Router, public live: LiveService) {
       this.location = location;
       this.sidebarVisible = false;
       data.db.list('chat').valueChanges().subscribe(e => {
@@ -67,7 +68,7 @@ export class NavbarComponent implements OnInit , AfterViewInit{
       left: 0,
       behavior: 'smooth'
       });
-       console.log("scrolled")
+       // console.log("scrolled")
     }
      
     ngOnInit(){
