@@ -14,7 +14,7 @@ export class RoomsComponent implements OnInit {
 rooms = [];
   constructor(public db: AngularFireDatabase, public router: Router, public data: DataService) {
 
-   this.data.roomid = localStorage.getItem('roomid')
+      this.data.roomid = localStorage.getItem('roomid');
       db.object('rooms').valueChanges().take(1).subscribe( s => {
               roomIDs = Object.keys(s);
               roomIDs.forEach(id => {
@@ -26,12 +26,12 @@ rooms = [];
           }
       );
   }
-  redir(id,numb){
+  redir(id, numb) {
     console.log(id);
-    localStorage.setItem('room',id);localStorage.setItem('roomid',numb);
-    this.data.roomid = localStorage.getItem('roomid')
-    this.router.navigate(['../editor'])
-
+    localStorage.setItem('room', id);
+    localStorage.setItem('roomid', numb);
+    this.data.roomid = localStorage.getItem('roomid');
+    this.router.navigate(['../editor']);
   }
 
   ngOnInit() {
